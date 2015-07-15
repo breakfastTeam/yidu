@@ -1,0 +1,76 @@
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>微信分类管理</strong></div>
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="text" placeholder="名称" class="form-control" ng-model="wechatType.name">
+                </div>
+            </div>
+        </div>
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-8">
+                    <a href="#/wechatTypeAdd" class="btn btn-success btn-w-md">添加</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+            <tr>
+                <th>
+                    <div class="th">
+                        序号
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        一级分类
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        二级分类
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        操作
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="wechatTypes==''">
+                <td colspan="6" class="text-center">暂无数据</td>
+            </tr>
+            <tr dir-paginate="wechatType in wechatTypes | itemsPerPage: pageSize" total-items="total" ng-if="!wechatTypes==''">
+                <td>{{$index+1}}</td>
+                <td>{{wechatType.name}}</td>
+                <td>
+                    <span class="label label-info"  ng-if="!wechatType.parentId">一级分类</span>
+                    <span class="label label-success"  ng-if="wechatType.parentId">二级分类</span>
+                </td>
+                <td>
+                    <a ng-if="!wechatType.parentId" href="#/wechatTypeEdit/{{wechatType.id}}" class="btn-icon btn-icon-sm btn-success" title="添加二级分类">
+                        <span class="ti-plus"></span></a>
+                    <a href="#/wechatTypeEdit/{{wechatType.id}}" class="btn-icon btn-icon-sm btn-primary" title="编辑">
+                        <span class="ti-pencil"></span></a>
+                </td>
+            </tr>
+
+            <input type="hidden" ng-bind="{{currentPage}}"/>
+            </tbody>
+        </table>
+
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-12 text-right pagination-container">
+                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                </div>
+            </div>
+        </footer>
+
+    </section>
+</div>

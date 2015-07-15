@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div ng-repeat="wechat in wechats">
+            <div class="media" ng-click="wechatDetail(wechat.id)">
+                <a class="pull-left" href="javascript:;">
+                    <img alt="" src="{{wechat.logo}}" class="img-rounded img64_64">
+                </a>
+
+                <div class="media-body position-relative height-64">
+                    <label class="media-heading">{{wechat.name}}</label>
+                    <a href="javascript:void(0);" ng-click="operateSubscribe(wechat.id, wechat.sub, $index, $event)"
+                       ng-class="getBtnClass(wechat.sub)"><i ng-class="getIconClass(wechat.sub)"></i></a>
+                    <br/>
+                <span class="position-absolute bottom-0">
+                    <small>{{wechat.name}}</small>
+                </span>
+                </div>
+            </div>
+            <div class="divider divider-dashed divider-sm pull-in"></div>
+        </div>
+        <input type="hidden" ng-bind="{{pageNo}}"/>
+        <button ng-click="loadMore()" ng-if="!last" type="button" class="btn btn-default btn-block">加载更多</button>
+    </div>
+</div>

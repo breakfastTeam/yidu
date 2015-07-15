@@ -1,0 +1,87 @@
+<#assign ctx = request.contextPath>
+    <!doctype html>
+    <html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="">
+        <!--<meta name="viewport" content="width=device-width">-->
+        <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/angular-strap/css/default.min.css" />
+        <link rel="stylesheet" href="bower_components/angular-strap/css/libs.min.css" />
+        <link rel='stylesheet' href='bower_components/angular-loading-bar/loading-bar.css' />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles/themify-icons/css/themify-icons.min.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/myAnimation.css">
+        <link rel="stylesheet" href="styles/animate/ng-animation.css">
+
+
+        <!-- endbuild -->
+    </head>
+    <body ng-app="dongtai" class="app" ng-controller="indexCtrl">
+    <header id="header"  class="header-container bg-white header-fixed {{headerDisplay}}" ng-include="'${ctx}/views/header.html'">
+
+    </header>
+    <div class="main-container  {{contentContentTopZero}}">
+        <aside id="nav-container" ng-class="{'left-slider-hide-without-animate':true&&addHideLeftSlider,' bg-dark':true}" class="nav-container nav-fixed nav-vertical {{sliderDisplay}}" ng-include="'${ctx}/views/slider.html'">
+        </aside>
+
+        <div id="content" class="content-container">
+            <section ui-view class="view-container animate-fade-up">
+            </section>
+        </div>
+
+        <footer id="footer" class="app-footer" ng-include="'${ctx}/views/footer.html'">
+
+        </footer>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="bower_components/lodash/lodash.min.js"></script>
+    <script src='bower_components/angular-loading-bar/loading-bar.js'></script>
+    <script src='bower_components/jquery-slimscroll/jquery.slimscroll.min.js'></script>
+
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+    <script src="${ctx}/scripts/app.js"></script>
+
+    <script src="${ctx}/scripts/controller/index.controller.js"></script>
+    <script src="${ctx}/scripts/controller/subject.controller.js"></script>
+    <script src="${ctx}/scripts/controller/subscribe.controller.js"></script>
+    <script src="${ctx}/scripts/controller/article.controller.js"></script>
+    <script src="${ctx}/scripts/controller/wechat.controller.js"></script>
+
+    <script src="${ctx}/scripts/service/service.js"></script>
+
+
+    <script src="${ctx}/scripts/router/router.js"></script>
+    <script>
+        angular.module('constants', [])
+                .constant('ctx','${request.contextPath!}')
+
+
+    </script>
+    <!-- endbuild -->
+    </body>
+    </html>

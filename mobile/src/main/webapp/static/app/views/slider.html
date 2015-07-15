@@ -1,0 +1,43 @@
+<div class="nav-wrapper">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+        <ul id="nav" class="nav">
+            <li ng-if="operateType=='subject'" ng-repeat="subject in subjects">
+                <a href="javascript:void(0)" class="text-center" ng-click="getArticles(subject.id)">
+                    <span>{{subject.name}}</span>
+                </a>
+            </li>
+
+            <li ng-if="operateType=='subscribe'" ng-class="{open:parentIndex==$index}" ng-repeat="wechatTypeModal in wechatTypeModals">
+                <a ng-if="wechatTypeModal.secondLevel==''" class="text-center" href="javascript:void(0)" ng-click="getWechats(wechatTypeModal.firstLevel.id, -1, 'first')">
+                    <span>{{wechatTypeModal.firstLevel.name}}</span>
+                </a>
+                <a ng-if="wechatTypeModal.secondLevel!=''" class="text-center" href="javascript:void(0)" ng-click="toggleSecondLevel($index)">
+                    <span>{{wechatTypeModal.firstLevel.name}}</span>
+                    <i ng-class="{'ti-angle-right':parentIndex!=$index, 'icon-has-ul':true, 'pull-right':true}"></i>
+                    <i ng-class="{'ti-angle-down':parentIndex==$index, 'icon-has-ul':true, 'pull-right':true}"></i>
+                </a>
+
+                <ul ng-if="wechatTypeModal.secondLevel!=''" ng-class="{show:parentIndex==$index}">
+                    <li ng-repeat="wechatType in wechatTypeModal.secondLevel" class="text-center" ng-class="{active:secondIndex==$index&&parentIndex==$parent.$index}">
+                        <a href="javascript:void(0)" ng-click="getWechats(wechatType.id, $index, 'second')"><span>{{wechatType.name}}</span></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li ng-if="operateType=='personal'" ng-repeat="personal in personals">
+                <a href="javascript:void(0)" class="text-center" ng-click="changePersonal(personal.type)">
+                    <span>{{personal.name}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+    <script>
+//        $(function () {
+//            $('.slimScrollDiv').slimscroll({
+//                height: 'auto'
+//            });
+//        });
+    </script>

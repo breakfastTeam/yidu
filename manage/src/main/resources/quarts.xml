@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+
+    <!--配置抓取文章定时器业务实现 -->
+    <bean id="grabHotArticleFromSogouJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="articleService"/>
+        <property name="targetMethod" value="grabHotArticleFromSogou"/>
+    </bean>
+
+    <bean id="grabHotArticleFromSogouTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="grabHotArticleFromSogouJobDetail"/>
+        <property name="cronExpression" value="0 0/20 * * * ?"/>
+        <!-- 每10分钟触发一次 0 0/1 * * * ?-->
+    </bean>
+
+
+    <!--配置抓取公众号文章定时器业务实现 -->
+    <bean id="grabWechatArticleFromSogouJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="articleService"/>
+        <property name="targetMethod" value="grabWechatArticle"/>
+    </bean>
+
+    <bean id="grabWechatArticleFromSogouTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="grabWechatArticleFromSogouJobDetail"/>
+        <property name="cronExpression" value="0 0 0/4 * * ?"/>
+        <!-- 每天00:00:00触发搜索服务器-->
+    </bean>
+
+
+    <!--配置推送最新文章的定时器业务实现 -->
+    <bean id="pushNewHotArticlesJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="articleService"/>
+        <property name="targetMethod" value="pushNewHotArticles"/>
+    </bean>
+
+    <bean id="pushNewHotArticlesJobDetailTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="pushNewHotArticlesJobDetail"/>
+        <property name="cronExpression" value="0 0 12 * * ?"/>
+        <!-- 每天00:00:00触发搜索服务器-->
+    </bean>
+
+    <!--配置推送最新文章的定时器业务实现 -->
+    <bean id="pushWechatArticlesJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="articleService"/>
+        <property name="targetMethod" value="pushWechatArticles"/>
+    </bean>
+
+    <bean id="pushWechatArticlesJobDetailTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="pushWechatArticlesJobDetail"/>
+        <property name="cronExpression" value="0 0 0/15 * * ?"/>
+        <!-- 每天00:00:00触发搜索服务器-->
+    </bean>
+
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <!-- 添加触发器 -->
+        <property name="triggers">
+            <list>
+                <ref bean="grabHotArticleFromSogouTrigger"/>
+                <ref bean="grabWechatArticleFromSogouTrigger"/>
+                <ref bean="pushNewHotArticlesJobDetailTrigger"/>
+                <ref bean="pushWechatArticlesJobDetailTrigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>

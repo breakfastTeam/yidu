@@ -1,0 +1,122 @@
+<div class="page page-table">
+    <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>公众号管理</strong></div>
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="text" placeholder="名称" class="form-control" ng-model="subject.name">
+                </div>
+                <div class="col-sm-4">
+                    <div class="btn-group">
+                        <button id="group" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">{{wechatTypeName}}<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="wechatType in wechatTypes"><a href="javascript:void(0);"
+                                                                         ng-click="setWechatTypeName(wechatType.name, wechatType.id)">{{wechatType.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="table-filters">
+            <div class="row">
+                <div class="col-sm-8">
+                    <a href="#/wechatAdd" class="btn btn-success btn-w-md">添加</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+            <tr>
+                <th>
+                    <div class="th">
+                        序号
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        图标
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        名称
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        账号
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        认证公司
+                    </div>
+                </th>
+                <th>
+                    <div class="th">
+                        分类
+                    </div>
+                </th>
+
+                <th>
+                    <div class="th">
+                        操作
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-if="wechats==''">
+                <td colspan="7" class="text-center">暂无数据</td>
+            </tr>
+            <tr dir-paginate="wechat in wechats | itemsPerPage: pageSize" total-items="total" ng-if="!wechats==''">
+                <td>{{$index+1}}</td>
+                <td>
+                    <img src="{{wechat.logo}}" alt="" class="img-circle img30_30">
+                </td>
+                <td>{{wechat.name}}</td>
+                <td>{{wechat.account}}</td>
+                <td ng-if="wechat.company">{{wechat.company}}</td>
+                <td ng-if="!wechat.company">未认证</td>
+                <td>
+                    <div class="btn-group">
+                        <button ng-if="wechat.wechatType.name" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">{{wechat.wechatType.name}}<span class="caret"></span>
+                        </button>
+
+                        <button ng-if="!wechat.wechatType.name" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            请选择分类
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="wechatType in wechatTypes"><a href="javascript:void(0);"
+                                                                         ng-click="changeWechatType(wechat.id, wechatType.id, $parent.$index)">{{wechatType.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <a href="#/wechatEdit/{{wechat.id}}" class="btn-icon btn-icon-sm btn-primary" title="编辑">
+                        <span class="ti-pencil"></span>
+                    </a>
+                </td>
+            </tr>
+
+            <input type="hidden" ng-bind="{{currentPage}}"/>
+            </tbody>
+        </table>
+
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-12 text-right pagination-container">
+                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                </div>
+            </div>
+        </footer>
+
+    </section>
+</div>

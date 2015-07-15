@@ -1,0 +1,167 @@
+<div class="page">
+    <section class="panel panel-default">
+        <form role="form" ng-submit="saveOrUpdate()" name="edit">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>个人资料</strong></div>
+            <div class="panel-body">
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label><div class="requiredItem pull-left">*</div>登录账户{{checked}}：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input ng-if="id" type="text" class="form-control"  readonly="readonly"
+                                ng-model="sysLogin.loginName"  required>
+                        <input ng-show="!id" type="text" class="form-control" name="longinName" ng-check-user ng-pattern="/^\w*$/"
+                                ng-model="sysLogin.loginName"  required>
+                        <p ng-show="edit.longinName.$error.required && !edit.longinName.$pristine" class="help-block"
+                           style="color:red">账号不能为空</p>
+
+                        <p  ng-show="isUserNameExist && !edit.longinName.$pristine" class="help-block" style="color:red">用户名已存在</p>
+                        <p ng-show="edit.longinName.$error.pattern && !edit.longinName.$pristine" class="help-block" style="color:red">登录名必须是数字或者字母组合.</p>
+
+                    </div>
+                </div>
+
+                <div ng-if="!id" class="row form-group">
+                    <div class="col-md-2">
+
+                        <label><div class="requiredItem pull-left">*</div>登录密码：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" name="password" class="form-control"  ng-model="sysLogin.password" ng-minlength="6" ng-maxlength="12" requeired>
+                        <p ng-show="edit.password.$error.required && !edit.password.$pristine" class="help-block" style="color:red">密码不能为空.</p>
+                        <p ng-show="edit.password.$error.minlength && !edit.password.$pristine " class="help-block" style="color:red">长度需要大于6个.</p>
+                        <p ng-show="edit.password.$error.maxlength  && !edit.password.$pristine " class="help-block" style="color:red">长度需要小于12个.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <label><div class="requiredItem pull-left">*</div>确认密码：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="password" name="confirmPassword" class="form-control" required="请再次确认密码" contrast="password"
+                               ng-model="confirmPassword" requeired>
+
+                        <p ng-show="edit.confirmPassword.$error.required && !edit.confirmPassword.$pristine"
+                           class="help-block" style="color:red">密码不能为空.</p>
+
+                        <p ng-show="!(sysLogin.password == confirmPassword) && !edit.password.$pristine"
+                           class="help-block" style="color:red">密码不一致.</p>
+                    </div>
+                </div>
+
+                <div class="divider divider-dashed divider-sm pull-in"></div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label><div class="requiredItem pull-left">*</div>姓名：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="realName" class="form-control" required="请填写姓名"
+                               ng-model="sysUser.realName" required>
+
+                        <p ng-show="edit.realName.$invalid && !edit.realName.$pristine" class="help-block"
+                           style="color:red">姓名不能为空.</p>
+                    </div>
+                        <div class="col-md-2">
+                            <label>性别：</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="ui-radio"><input name="sex" ng-model="sysUser.sex" type="radio"
+                                                           value="MEN"><span>男</span></label>
+                            <label class="ui-radio"><input name="sex" ng-model="sysUser.sex" type="radio" value="WOMEN"><span>女</span></label>
+                        </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label><div class="requiredItem pull-left">*</div>电话：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="phone" name="phone" class="form-control" required="请填写电话" ng-model="sysUser.tel"
+                               required ng-pattern="/^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/">
+
+                        <p ng-show="edit.phone.$error.pattern" class="help-block" style="color:red">请填写正确的手机号.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <label>邮箱：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="email" name="email" class="form-control"  ng-model="sysUser.email">
+
+                        <p ng-show="edit.email.$error.email" class="help-block" style="color:red">请填写正确的邮箱.</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <div class="requiredItem pull-left">*</div><label>角色：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="roleId" ng-model="sysRole.id" class="form-control" required="">
+                            <option value="">请选择角色</option>
+                            <option ng-repeat="role in roles" value="{{role.id}}"  >{{role.roleName}}</option>
+                          </select>
+                        <p ng-show="edit.roleId.$error.required && !edit.roleId.$pristine"
+                           class="help-block" style="color:red">请选择角色</p>
+                    </div>
+                    <div class="col-md-2">
+                        <label>头像：</label>
+                    </div>
+                    <div class="col-md-4">
+                    <span class="btn btn-success fileinput-button pull-left">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>上传头像</span>
+                                            <input id="idCard" type="file" fileupload  data-url="sysUser/uploadAvatar"
+                                                   name="files" done="uploadFinished(e, data)"  progressall="uploading(e, data)"
+                                                   multiple>
+                                            </span>
+                        <div class="control-label pull-left">{{avatarFileName}}</div>
+                        <button id="avatarDelButton" type="button"
+                                class="btn btn-danger non-display pull-right">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span>删除</span>
+                        </button>
+                        <div class="progress control-label {{nondisplay}} white-bg col-lg-12">
+                            <div class="progress-bar progress-bar-success" style="width:{{progress}}"></div>
+                        </div>
+                        <input type="hidden" ng-model="sysUser.avatar">
+                    </div>
+                </div>
+
+                <div class="row form-group" ng-show="isUserTypeShow">
+                    <div class="col-md-2">
+                        <div class="requiredItem pull-left">*</div><label>类型：</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="type" ng-model="sysUser.type" class="form-control" required>
+                            <option value="">请选择类型</option>
+                            <option value="PRE_SALE">销售顾问</option>
+                            <option value="AFTER_SALE">售后顾问</option>
+                            <option value="RESCUER">救援人员</option>
+                            <option value="PRE_SALE_MANAGER">销售经理</option>
+                            <option value="AFTER_SALE_MANAGER">售后经理</option>
+                        </select>
+                        <p ng-show="edit.type.$error.required && !edit.type.$pristine"
+                           class="help-block" style="color:red">请选择角色</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label>简介：</label></div>
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" ng-model="sysUser.remark" ></textarea>
+                    </div>
+                </div>
+
+
+                <div class="divider divider-dashed divider-sm pull-in"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-success btn-w-md" ng-disabled="edit.$invalid">提交</button>
+                        <a href="javascript:window.history.go(-1)" class="btn btn-danger btn-w-md">返回</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end Radio buttons and checkbox -->
+        </form>
+    </section>
+</div>

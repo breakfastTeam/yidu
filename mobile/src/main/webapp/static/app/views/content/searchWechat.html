@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="请输入公众号名称" name="name" ng-model="keyword">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <button class="btn btn-success btn-block" ng-click="search()">查询</button>
+            </div>
+        </div>
+
+        <div class="{{showResult}}">
+            <div class="divider divider-dotted divider-sm pull-in"></div>
+            <div class="media">
+                <div class="media-body">
+                    没有想要的公众号号？
+                    <a href="javascript:void(0);" ng-click="toSearchFromInternet()">点击添加</a>
+                </div>
+            </div>
+            <div class="divider divider-dotted divider-sm pull-in"></div>
+        </div>
+        <div ng-repeat="wechat in wechats">
+            <div class="media" ng-click="wechatDetail(wechat.id)">
+                <a class="pull-left" href="javascript:;">
+                    <img alt="" src="{{wechat.logo}}" class="img-rounded img64_64">
+                </a>
+
+                <div class="media-body  position-relative height-64">
+                    <label class="media-heading">{{wechat.name}}</label>
+                    <a href="javascript:void(0);" ng-click="operateSubscribe(wechat.id, wechat.sub, $index, $event)"
+                       ng-class="getBtnClass(wechat.sub)"><i ng-class="getIconClass(wechat.sub)"></i></a>
+                    <br/>
+                    <span class="position-absolute bottom-0">
+                        <small>{{wechat.company}}</small>
+                    </span>
+                </div>
+            </div>
+            <div class="divider divider-dashed divider-sm pull-in"></div>
+        </div>
+        <input type="hidden" ng-bind="{{pageNo}}"/>
+        <button ng-click="loadMore()" ng-if="!last" type="button" class="btn btn-default btn-block">加载更多</button>
+    </div>
+</div>

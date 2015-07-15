@@ -1,0 +1,28 @@
+<div class="page">
+    <section class="panel panel-default">
+        <form role="form" name="edit">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>文章分类</strong></div>
+            <div class="panel-body">
+                <div class="row form-group">
+                    <div class="col-md-2">
+                        <label>名称：</label>
+                    </div>
+                    <div class="col-md-4">
+
+                        <input type="text" class="form-control" name="name"
+                                ng-model="subject.name">
+                    </div>
+                </div>
+
+                <div class="divider divider-dashed divider-sm pull-in"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-success btn-w-md" ng-click="saveOrUpdate()">提交</button>
+                        <a href="javascript:window.history.go(-1)" class="btn btn-danger btn-w-md">返回</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end Radio buttons and checkbox -->
+        </form>
+    </section>
+</div>

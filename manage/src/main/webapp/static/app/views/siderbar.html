@@ -1,0 +1,47 @@
+<div class="nav-wrapper">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+        <ul id="nav" class="nav" data-slim-scroll="" data-collapse-nav="" data-highlight-active=""
+            style="overflow: hidden; width: auto; height: 100%;">
+            <!--<li class="active"><a href="#/article"> <i class="ti-home"></i><span>控制面板</span> </a></li>-->
+            <li>
+                <a href="#/"><i class="ti-bag"></i><span>基础功能</span></a>
+                <ul>
+                    <li><a href="#/article"><i class="ti-angle-right"></i><span>文章管理</span></a></li>
+                    <li><a href="#/subject"><i class="ti-angle-right"></i><span>文章分类</span></a></li>
+                    <li><a href="#/wechat"><i class="ti-angle-right"></i><span>微信管理</span></a></li>
+                    <li><a href="#/wechatType"><i class="ti-angle-right"></i><span>微信分类</span></a></li>
+
+                </ul>
+                <i class="ti-angle-down icon-has-ul-h"></i><i class="ti-angle-right icon-has-ul"></i></li>
+        </ul>
+    </div>
+</div>
+<script>
+    !function(){
+
+        initMenu();
+        function initMenu(){
+            var nav = $("#nav");
+            $("#nav li:first-child").addClass("active");
+            var firstMenuWithSubMenu = nav.find("ul").parent("li");
+            var firstMenuWithoutSubMenu = nav.children("li").not(firstMenuWithSubMenu);
+
+            firstMenuWithoutSubMenu.children("a").on("click",function(){
+                firstMenuWithSubMenu.removeClass("open").find("ul").slideUp(250);
+                $(this).parent("li").addClass("active");
+            });
+
+            firstMenuWithSubMenu.children("a").on("click",function(e){
+                e.preventDefault();
+                firstMenuWithSubMenu.removeClass("open").find("ul").slideUp(250);
+                $(this).parent("li").toggleClass("open").find("ul").stop().slideToggle(250);
+                firstMenuWithoutSubMenu.removeClass("active");
+            });
+            var subMenu = nav.find("ul").children("li");
+            subMenu.children("a").on("click",function(){
+                subMenu.removeClass("active");
+                $(this).parent("li").addClass("active");
+            })
+        }
+    }();
+</script>

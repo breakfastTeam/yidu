@@ -1,0 +1,69 @@
+<div class="page">
+    <section class="panel panel-default">
+        <form role="form" name="edit">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>微信分类</strong></div>
+            <div class="panel-body">
+                <!---二级菜单--->
+                <div ng-if="wechatType.parentId">
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label>一级名称：</label>
+                        </div>
+                        <div class="col-md-4">
+                            {{wechatType.parent.name}}
+                        </div>
+                    </div>
+                    <div class="divider divider-dashed divider-sm pull-in"></div>
+                    <div class="row form-group" ng-repeat="secondLevel in secondLevels">
+                        <div class="col-md-2">
+                            <label>二级名称：</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="secondLevel.name">
+                        </div>
+                    </div>
+
+                </div>
+                <!---一级菜单--->
+                <div ng-if="!wechatType.parentId">
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <label>一级名称：</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="wechatType.name">
+                        </div>
+                    </div>
+                    <div class="divider divider-dashed divider-sm pull-in"></div>
+                    <div class="row form-group">
+                        <div class="col-md-2">
+                            <button class="btn btn-success btn-w-md" ng-click="addSecondLevel()">增加二级分类</button>
+                        </div>
+                     </div>
+                    <div class="divider divider-dashed divider-sm pull-in"></div>
+                    <div class="row form-group" ng-repeat="secondLevel in secondLevels">
+                        <div class="col-md-2">
+                            <label>二级名称：</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="secondLevel.name">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="divider divider-dashed divider-sm pull-in"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-success btn-w-md" ng-click="saveOrUpdate()">提交</button>
+                        <a href="javascript:window.history.go(-1)" class="btn btn-danger btn-w-md">返回</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end Radio buttons and checkbox -->
+        </form>
+    </section>
+</div>

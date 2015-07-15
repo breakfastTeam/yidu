@@ -1,0 +1,25 @@
+<div class="page">
+    <section class="panel panel-default">
+        <div class="panel-body">
+            <div class="media">
+                <div class="media-body position-relative height-64">
+                    <label class="media-heading">{{article.title}}</label>
+                    <br/>
+                    <span class="position-absolute bottom-0">
+                        <small>阅读数：{{article.readTimes}}</small>
+                    </span>
+                </div>
+            </div>
+            <div class="divider divider-dashed divider-sm pull-in"></div>
+            <div ng-bind-html = "article.content|to_trusted">
+
+            </div>
+            <div class="divider divider-dashed divider-sm pull-in"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="javascript:window.history.go(-1)" class="btn btn-danger">返回</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

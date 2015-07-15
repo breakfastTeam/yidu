@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="media">
+            <a class="pull-left" href="javascript:;">
+                <img alt="" src="{{wechat.logo}}" class="img-rounded img64_64">
+            </a>
+
+            <div class="media-body">
+                <label class="media-heading">{{wechat.name}}</label>
+                <a href="javascript:void(0);" ng-click="operateSubscribe(wechat.id, wechat.sub, $event)"
+                   ng-class="getBtnClass(wechat.sub)"><i ng-class="getIconClass(wechat.sub)"></i>{{wechat.sub?' 取消':'
+                    订阅'}}</a>
+                </br>
+                <span class="pull-left">
+                <small>微信号：{{wechat.account}}</small>
+                    </br>
+                    <small>关注数：<span class="color-success">{{wechat.subCount}}</span> 人</small>
+                </span>
+
+            </div>
+        </div>
+        <div class="divider divider-dotted divider-sm pull-in"></div>
+
+        <div ng-repeat="article in articles">
+            <div class="media">
+                <a class="pull-left" href="javascript:;">
+                    <img alt="" src="{{article.logo}}" class="img-rounded img64_64">
+                </a>
+
+                <div class="media-body position-relative height-64">
+                    <label class="media-heading">{{article.title}}</label>
+                    </br>
+                    <span class="position-absolute bottom-0 full-width">
+                        <small>来源：{{article.wechat.name}}</small>
+                        <small class="pull-right">阅读：{{article.readTimes}}次</small>
+                    </span>
+                </div>
+            </div>
+            <div class="divider divider-dashed divider-sm pull-in"></div>
+        </div>
+        <input type="hidden" ng-bind="{{pageNo}}"/>
+        <button ng-click="loadMore()" ng-if="!last" type="button" class="btn btn-default btn-block">加载更多</button>
+    </div>
+</div>

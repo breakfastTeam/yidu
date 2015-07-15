@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div ng-repeat="article in articles" class="slide-down">
+            <div class="media" ng-click="goToDetail(article.id)">
+                <a class="pull-left" href="javascript:;">
+                    <img alt="" src="{{article.logo}}" class="img-rounded img64_64">
+                </a>
+
+                <div class="media-body position-relative height-64">
+                    <label class="media-heading">{{article.title}}</label>
+                    <br/>
+                    <span class="position-absolute bottom-0 full-width">
+                        <small>{{article.wechat.name}}</small><small class="pull-right">阅读数：{{article.readTimes}}</small>
+                    </span>
+                </div>
+            </div>
+            <div class="divider divider-dashed divider-sm pull-in"></div>
+        </div>
+    </div>
+</div>

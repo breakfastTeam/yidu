@@ -1,0 +1,126 @@
+<#assign ctx = request.contextPath>
+  <!doctype html>
+  <html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ztree/css/zTreeStyle.css" />
+    <link rel="stylesheet" href="bower_components/angular-strap/css/default.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-strap/css/libs.min.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.core.css" />
+    <link rel="stylesheet" href="bower_components/pnotify/pnotify.buttons.css">
+    <link rel="stylesheet" href="bower_components/jquery-upload/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="bower_components/jquery-upload/css/jquery.fileupload-ui.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css">
+
+    <link rel="stylesheet" href="bower_components/jquery-fancybox/jquery.fancybox.css">
+
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/themify-icons/css/themify-icons.min.css">
+
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- endbuild -->
+  </head>
+  <body ng-app="dongtai" class="app" ng-controller="indexCtrl">
+  <header id="header" class="header-container bg-white header-fixed" ng-include="'views/header.html'">
+
+  </header>
+  <div class="main-container">
+    <aside id="nav-container" class="nav-container ng-scope nav-fixed nav-vertical bg-dark" ng-include="'views/siderbar.html'">
+    </aside>
+
+    <div id="content" class="content-container">
+      <section ui-view class="view-container animate-fade-up">
+      </section>
+    </div>
+
+    <footer id="footer" class="app-footer" ng-include="'views/footer.html'">
+    </footer>
+  </div>
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="bower_components/ztree/script/jquery.ztree.all-3.5.js"></script>
+  <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+  <script src="bower_components/restangular/dist/restangular.min.js"></script>
+  <script src="bower_components/lodash/lodash.min.js"></script>
+  <script src="bower_components/jquery-upload/vendor/jquery.ui.widget.js"></script>
+  <script src="bower_components/jquery-upload/jquery.fileupload.js"></script>
+
+
+  <script src="bower_components/pnotify/pnotify.core.js"></script>
+  <script src="bower_components/pnotify/pnotify.confirm.js"></script>
+  <script src="bower_components/pnotify/pnotify.buttons.js"></script>
+  <script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
+
+  <script src="bower_components/angular-strap/modules/date-formatter.min.js"></script>
+  <script src="bower_components/angular-strap/modules/date-parser.min.js"></script>
+  <script src="bower_components/angular-strap/modules/tooltip.min.js"></script>
+  <script src="bower_components/angular-strap/modules/tooltip.tpl.min.js"></script>
+  <script src="bower_components/angular-strap/modules/datepicker.js"></script>
+  <script src="bower_components/angular-strap/modules/datepicker.tpl.min.js"></script>
+  <script src="bower_components/angular-strap/modules/timepicker.js"></script>
+  <script src="bower_components/angular-strap/modules/timepicker.tpl.min.js"></script>
+  <script src="bower_components/angular-strap/modules/dimensions.min.js"></script>
+  <script src="bower_components/angular-ueditor/dist/angular-ueditor.js"></script>
+  <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+
+  <script src="http://cdn.bootcss.com/require.js/2.1.17/require.min.js"></script>
+  <script src="bower_components/echarts/build/dist/echarts.js"></script>
+
+  <script src="bower_components/ueditor/ueditor.config.js"></script>
+  <script src="bower_components/ueditor/ueditor.all.js"></script>
+
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/directive/directive-ztree.js"></script>
+  <script src="scripts/directive/directive-ueditor.js"></script>
+  <script src="scripts/directive/directive-dateformat.js"></script>
+  <script src="scripts/directive/directive-upload.js"></script>
+  <script src="scripts/directive/directive-comparedata.js"></script>
+  <script src="scripts/directive/directive-fancybox.js"></script>
+
+
+  <script src="scripts/controller/index.controller.js"></script>
+  <script src="scripts/controller/article.controller.js"></script>
+  <script src="scripts/controller/subject.controller.js"></script>
+  <script src="scripts/controller/wechat.controller.js"></script>
+  <script src="scripts/controller/wechatType.controller.js"></script>
+
+
+  <script src="scripts/service/service.js"></script>
+
+
+  <script src="scripts/router/router.js"></script>
+
+  <script src="bower_components/jquery-fancybox/jquery.fancybox.pack.js"></script>
+
+
+  <script>
+    angular.module('dongtai.constants', [])
+            .constant('ctx','${request.contextPath!}');
+
+
+  </script>
+  <!-- endbuild -->
+  </body>
+  </html>
