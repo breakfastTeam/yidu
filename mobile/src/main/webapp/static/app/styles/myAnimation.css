@@ -3,16 +3,19 @@
     -moz-transition:all linear 0.3s;
     -o-transition:all linear 0.3s;
     transition:all linear 0.3s;
-    margin-left:0px;
+    /*margin-left:0px;*/
+    right:0px;
 }
 
 .left-slider-hide,
 .left-slider-hide-add.left-slider-hide-add-active {
-    margin-left:-100px;
+    /*margin-left:-100px;*/
+    right: -100px;
 }
 
 .left-slider-hide-remove.left-slider-hide-remove-active {
-    margin-left:0px;
+    /*margin-left:0px;*/
+    right:0px;
 }
 
 
@@ -21,20 +24,24 @@
     -moz-transition:all linear 0.3s;
     -o-transition:all linear 0.3s;
     transition:all linear 0.3s;
-    margin-left:-100px;
+    /*margin-left:-100px;*/
+    right: -100px;
 }
 
 .left-slider-show,
 .left-slider-show-add.left-slider-show-add-active {
-    margin-left:0px;
+    /*margin-left:0px;*/
+    right:0px;
 }
 
 .left-slider-show-remove.left-slider-show-remove-active {
-    margin-left:-100px;
+    /*margin-left:-100px;*/
+    right: -100px;
 }
 
 
 
 .left-slider-hide-without-animate{
-    margin-left:-100px;
+    /*margin-left:-100px;*/
+    right: -100px;
 }

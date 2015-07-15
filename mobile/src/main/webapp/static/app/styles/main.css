@@ -14538,8 +14538,12 @@ a.fc-more:hover {
 	line-height: 20px
 }
 
-.header-container>.top-header .top-nav .nav-left>li,.header-container>.top-header .top-nav .nav-right>li {
+.header-container>.top-header .top-nav .nav-left>li{
 	float: left
+}
+
+.header-container>.top-header .top-nav .nav-right>li {
+	float: right
 }
 
 .header-container>.top-header .top-nav .nav-left>li.nav-profile>a,.header-container>.top-header .top-nav .nav-right>li.nav-profile>a {
