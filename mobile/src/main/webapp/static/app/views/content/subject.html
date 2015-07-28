@@ -1,0 +1,45 @@
+<div class="container full-width">
+<ul id="filters" class="clearfix">
+    <li ng-repeat="subject in subjects" ng-click="getArticles(subject.id, $index)">
+        <span ng-class="{active:$index==index}">{{subject.name}}</span>
+    </li>
+</ul>
+</div>
+<div class="panel panel-default" ng-repeat="article in articles">
+    <div class="panel-body" ng-click="goToDetail(article.id)">
+        <div class="row">
+            <div class="col-md-12">
+                <article class="media-box">
+                    <div class="media-box-photo">
+                        <img src="{{article.logo}}" alt="" style="width: 100%;">
+                    </div>
+                    <div class="media-box-body">
+                        <a class="profile-img pull-right" href=""><img src="" alt=""></a>
+                        <h5>{{article.title}}</h5>
+
+                        <div class="text-muted">
+                            {{article.briefIntro}}
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+        </br>
+        <div class="divider divider-dashed divider-lg pull-in"></div>
+        </br>
+        <div class="row">
+            <div class="col-md-6 pull-right">
+                <span class="ti-thumb-up"></span>
+            </div>
+            <div class="col-md-6">
+                <span class="ti-eye"></span><div class="space"></div>{{article.readTimes}}
+            </div>
+
+        </div>
+    </div>
+</div>
+<input type="hidden" ng-bind="{{pageNo}}"/>
+<button ng-if="!last" ng-click="loadMore()" type="button" class="btn btn-default btn-block">加载更多</button>
+</br>

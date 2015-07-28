@@ -20,29 +20,30 @@
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles/themify-icons/css/themify-icons.min.css">
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/myAnimation.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="styles/animate/ng-animation.css">
 
 
         <!-- endbuild -->
     </head>
-    <body ng-app="dongtai" class="app" ng-controller="indexCtrl">
-    <header id="header"  class="header-container bg-white header-fixed {{headerDisplay}}" ng-include="'${ctx}/views/header.html'">
+    <body ng-app="dongtai" class="app st-effect-9 {{menuOpen}}" ng-controller="indexCtrl">
+    <header id="header"  class="header-container bg-white header-fixed" ng-include="'${ctx}/views/header.html'">
 
     </header>
-    <div class="main-container  {{contentContentTopZero}}">
-        <aside id="nav-container" ng-class="{'left-slider-hide-without-animate':true&&addHideLeftSlider,' bg-dark':true}" class="nav-container nav-fixed nav-vertical {{sliderDisplay}}" ng-include="'${ctx}/views/slider.html'">
-        </aside>
+    <aside id="nav-container" class="st-effect-9" ng-include="'${ctx}/views/slider.html'">
 
-        <div id="content" class="content-container">
+    </aside>
+    <div class="main-container" ng-click="closeSlider()">
+        <div id="content">
             <section ui-view class="view-container animate-fade-up">
             </section>
         </div>
 
-        <footer id="footer" class="app-footer" ng-include="'${ctx}/views/footer.html'">
+        <!--<footer id="footer" class="app-footer" ng-include="'${ctx}/views/footer.html'">-->
 
-        </footer>
+        <!--</footer>-->
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->

@@ -3,11 +3,6 @@
  */
 angular.module('subjectController', ['service'])
     .controller('subjectCtrl', ['$scope', '$timeout', '$state', '$modal', 'ctx', 'SubjectRest', 'ArticleRest', function ($scope, $timeout, $state, $modal, ctx, subjectRest, articleRest) {
-
-        $scope.$emit('hideSearch');
-        $scope.$emit('showItem');
-        $scope.$emit('setHeaderTitle',"今日热点");
-
         $scope.$watch('$viewContentLoaded', function() {
             $timeout(function(){
                 $scope.$emit('hideSlider');
@@ -15,6 +10,7 @@ angular.module('subjectController', ['service'])
         });
 
         $scope.pageNo = 1;
+        $scope.index = 0;
         subjectRest.customGET('list').then(function (data) {
             $scope.$emit('changeOperateType', "subject", data.obj);
             var subjectId = data.obj[0].id;
@@ -22,11 +18,13 @@ angular.module('subjectController', ['service'])
             getSubjectArticles(subjectId, $scope.pageNo);
         });
 
-        $scope.$on('getArticles', function (e, subjectId) {
+        $scope.getArticles = function(subjectId, myIndex){
             $scope.subjectId = subjectId;
-            $scope.pageNo = 1;
-            getSubjectArticles(subjectId, $scope.pageNo);
-        });
+                $scope.pageNo = 1;
+                $scope.index = myIndex;
+                getSubjectArticles(subjectId, $scope.pageNo);
+        }
+
 
         function getSubjectArticles(subjectId, pageNo){
             $scope.$emit('hideSlider');

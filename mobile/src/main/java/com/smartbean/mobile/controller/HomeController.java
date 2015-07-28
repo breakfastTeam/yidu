@@ -14,12 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class HomeController {
 
-
-
-
-    /**
-     * 获取今日热门话题
-     * */
     @RequestMapping(value = {"/"})
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView();

@@ -3,6 +3,16 @@
  */
 angular.module('indexController', [])
     .controller('indexCtrl', ['$scope', function ($scope) {
+
+        $scope.openSlider = function(){
+            $scope.menuOpen = "st-menu-open";
+        }
+        $scope.closeSlider = function(){
+            $scope.menuOpen = "";
+        }
+
+
+
         $scope.addHideLeftSlider = true;
         /***
          * 定义左侧工具栏的操作内容
@@ -109,21 +119,6 @@ angular.module('indexController', [])
             $scope.$broadcast('changePersonal', type);
         }
 
-        /**
-         * 切换左侧工具栏和右侧内容栏的隐藏和展示
-         * **/
-        $scope.toggleSlider = function () {
-            var display = $scope.sliderDisplay;
-
-            if (!display || display == "left-slider-hide") {
-                $scope.addHideLeftSlider = false;
-                $scope.sliderDisplay = "left-slider-show";
-            } else {
-                $scope.sliderDisplay = "left-slider-hide";
-
-            }
-
-        };
         /**
          * 切换左侧工具栏和右侧内容栏的隐藏和展示
          * **/

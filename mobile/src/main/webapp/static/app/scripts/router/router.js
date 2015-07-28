@@ -3,7 +3,7 @@ app.config(["$stateProvider", "ctx", function ($stateProvider, ctx) {
         .state('subject', {
             url: '/subject',
             controller: 'subjectCtrl',
-            templateUrl: ctx + '/views/content/article.html'
+            templateUrl: ctx + '/views/content/subject.html'
         })
         .state('subscribe', {
             url: '/subscribe',

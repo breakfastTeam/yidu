@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7"  lang="hu" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7"  lang="hu" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8"  lang="hu" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"  lang="hu" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html  lang="hu" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+<link rel="shortcut icon" href="http://www.psd-designer.eu/sites/all/themes/psdDesigner/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+  <title>psd-Designer.eu</title>
+
+      <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cleartype" content="on">
+
+  <style>
+@import url("http://www.psd-designer.eu/modules/system/system.base.css?nrugxl");
+</style>
+<style>
+@import url("http://www.psd-designer.eu/modules/field/theme/field.css?nrugxl");
+@import url("http://www.psd-designer.eu/modules/node/node.css?nrugxl");
+@import url("http://www.psd-designer.eu/modules/search/search.css?nrugxl");
+@import url("http://www.psd-designer.eu/modules/user/user.css?nrugxl");
+@import url("http://www.psd-designer.eu/sites/all/modules/views/css/views.css?nrugxl");
+</style>
+<style>
+@import url("http://www.psd-designer.eu/sites/all/modules/colorbox/styles/default/colorbox_style.css?nrugxl");
+@import url("http://www.psd-designer.eu/sites/all/modules/ctools/css/ctools.css?nrugxl");
+</style>
+<style>
+@import url("http://www.psd-designer.eu/sites/all/themes/psdDesigner/css/styles.css?nrugxl");
+@import url("http://www.psd-designer.eu/sites/all/themes/psdDesigner/css/layout.css?nrugxl");
+@import url("http://www.psd-designer.eu/sites/all/themes/psdDesigner/css/responsive.css?nrugxl");
+@import url("http://www.psd-designer.eu/sites/all/themes/psdDesigner/css/components/misc.css?nrugxl");
+</style>
+  <script src="http://www.psd-designer.eu/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min.js?v=1.10.2"></script>
+<script src="http://www.psd-designer.eu/misc/jquery.once.js?v=1.2"></script>
+<script src="http://www.psd-designer.eu/misc/drupal.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/all/modules/admin_menu/admin_devel/admin_devel.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/default/files/languages/hu_M7WJbkJTgRmXmveOCVcWcN2EF83ahRgn1oCLJMnNn8U.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/all/libraries/colorbox/jquery.colorbox-min.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/all/modules/colorbox/js/colorbox.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/all/modules/colorbox/styles/default/colorbox_style.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/all/modules/google_analytics/googleanalytics.js?nrugxl"></script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-64938760-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("set", "page", "/404.html?page=" + document.location.pathname + document.location.search + "&from=" + document.referrer);ga("send", "pageview");</script>
+<script src="http://www.psd-designer.eu/sites/all/themes/psdDesigner/js/script.js?nrugxl"></script>
+<script src="http://www.psd-designer.eu/sites/all/themes/psdDesigner/js/transit.js?nrugxl"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"STARTERKIT","theme_token":"DHVD75W4w4Sng4TC8MQqFrs5hsrDkk-jyZb7w_TtgQE","js":{"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/admin_menu\/admin_devel\/admin_devel.js":1,"public:\/\/languages\/hu_M7WJbkJTgRmXmveOCVcWcN2EF83ahRgn1oCLJMnNn8U.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/psdDesigner\/js\/script.js":1,"sites\/all\/themes\/psdDesigner\/js\/transit.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/psdDesigner\/system.menus.css":1,"sites\/all\/themes\/psdDesigner\/system.messages.css":1,"sites\/all\/themes\/psdDesigner\/system.theme.css":1,"sites\/all\/themes\/psdDesigner\/css\/styles.css":1,"sites\/all\/themes\/psdDesigner\/css\/layout.css":1,"sites\/all\/themes\/psdDesigner\/css\/responsive.css":1,"sites\/all\/themes\/psdDesigner\/css\/components\/misc.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"}});</script>
+      <!--[if lt IE 9]>
+    <script src="/sites/all/themes/zen/js/html5-respond.js"></script>
+    <![endif]-->
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-work page-work-curiosity page-work-curiosity-img page-work-curiosity-img-navico page-work-curiosity-img-navico-bonus page-work-curiosity-img-navico-bonus-portfoliosvg section-work" >
+      
+<div id="page">
+
+  <header class="header" id="header" role="banner">
+
+    
+    
+    
+      <div class="header__region region region-header">
+    <div id="block-block-12" class="block block-block first odd">
+
+      
+  <div id="resp-nav-open-b"></div>
+<div id="resp-nav-close"></div>
+
+</div>
+<div id="block-block-10" class="block block-block last even">
+
+      
+  <div id="logo-top-b"> </div>
+<p><span id="logotxt-b"> PSD-Designer </span></p>
+
+</div>
+  </div>
+
+  </header>
+
+  <div id="main">
+
+    <div id="content" class="column" role="main">
+                  <a id="main-content"></a>
+                    <h1 class="page__title title" id="page-title">Az oldal nem található</h1>
+                                          A kért oldal „/Work/Curiosity/img/navico/bonus/portfolio.svg” nem található.          </div>
+
+    <div id="navigation">
+
+      
+      
+    </div>
+
+    
+    
+  </div>
+
+    <footer id="footer" class="region region-footer">
+    <div id="block-block-5" class="block block-block footer-block first last odd">
+
+      
+  <div id="foo-content" class="clearfix">
+<ul id="foo-nav"><li> <a href="www.psd-designer.eu"> Home </a>  <span id="first-b"> </span> </li>
+<li> <a href="www.psd-designer.eu/?q=portfolio"> Portfolio </a> <span id="second-b"> </span>  </li>
+<li> <a href="www.psd-designer.eu/?q=themeforest"> Themeforest </a> <span id="third-b"> </span>   </li>
+<li> <a href="www.psd-designer.eu/?q=contact"> Contact </a> </li>
+</ul><div id="mailfoo"> <a href="mailto:info@psd-designer.eu"> info@psd-designer.eu </a> </div>
+</div>
+<div id="copyright">
+<p> 2015 PSD-Designer,  All rights reserved. </p>
+<p> Designed &amp; Developed by PSD-Designer.eu @ Kardos Rudolf </p>
+<ul id="social-icons"><li onclick="location.href='http://themeforest.net/user/kardosrudolf';" id="envato"></li>
+<li onclick="location.href='https://instagram.com/psddesignereu';" id="instagram"></li>
+<li onclick="location.href='https://www.behance.net/psddesignereu';" id="behance"></li>
+<li onclick="location.href='https://www.facebook.com/psdwebdesigner';" id="facebook"></li>
+<li onclick="location.href='https://dribbble.com/psddesignereu';" id="dribbble"></li>
+<li onclick="location.href='http://twitter.com/psd_designer';" id="twitter"></li>
+</ul></div>
+
+</div>
+  </footer>
+
+</div>
+
+  </body>
+</html>

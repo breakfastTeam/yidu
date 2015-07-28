@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div ng-class="{ 'non-display':showType!='time', 'media' : true}">
-            <div class="media "  class="slide-down" ng-repeat="article in articles" ng-click="goToDetail(article.id)">
+            <div class="media "  class="flip-in" ng-repeat="article in articles" ng-click="goToDetail(article.id)">
                 <a class="pull-left" href="javascript:;">
                     <img alt="" src="{{article.logo}}" class="img-rounded img64_64">
                 </a>
@@ -10,7 +10,7 @@
                     <label class="media-heading">{{article.title}}</label>
                     <br/>
                 <span class="position-absolute bottom-0" style="width:100%;">
-                     <small>{{article.wechat.company}}</small> <small class="pull-right">阅读：{{article.readTimes}}
+                     <small>{{article.wechat.name}}</small> <small class="pull-right">阅读：{{article.readTimes}}
                 </small>
                 </span>
                 </div>
@@ -31,7 +31,7 @@
                     <br/>
                 <span class="position-absolute bottom-0" style="width:100%;">
                      <small>{{wechat.company}}</small>
-                    </small>
+
                 </span>
                 </div>
                 <div class="divider divider-dashed divider-sm pull-in"></div>
