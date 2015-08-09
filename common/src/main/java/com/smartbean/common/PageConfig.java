@@ -6,6 +6,8 @@ package com.smartbean.common;
 public class PageConfig {
     public static final int PAGE_SIZE = 15;
 
+    public static final int SMALL_PAGE_SIZE = 5;
+
     public int getPageNo() {
         return pageNo;
     }

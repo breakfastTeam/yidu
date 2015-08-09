@@ -10,6 +10,7 @@ var app = angular.module('dongtai', [
     'restangular',
     'indexController',
     'subjectController',
+    'findController',
     'subscribeController',
     'articleController',
     'wechatController'

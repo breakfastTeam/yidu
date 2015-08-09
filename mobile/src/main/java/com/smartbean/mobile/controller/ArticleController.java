@@ -9,6 +9,7 @@ import com.smartbean.entity.ReadLog;
 import com.smartbean.entity.Subject;
 import com.smartbean.model.BriefArticleModel;
 import com.smartbean.model.DetailArticleModel;
+import com.smartbean.model.WechatArticleModel;
 import com.smartbean.service.ArticleService;
 import com.smartbean.service.ReadLogService;
 import com.smartbean.service.SubjectService;
@@ -97,10 +98,10 @@ public class ArticleController {
     public JsonResult getSubscribeArticles(@RequestParam int pageNo, HttpSession session){
         JsonResult jsonResult=new JsonResult();
         String customerId = (String)session.getAttribute(SessionData.CUSTOMER_ID.toString());
-        PageRequest pageRequest = new PageRequest(pageNo-1, PageConfig.PAGE_SIZE ,new Sort(new Sort.Order(Sort.Direction.DESC, "createTime")));
-        Page<Article> page = articleService.getByCustomer(pageRequest, customerId);
-
-        jsonResult.setObj(page);
+        PageRequest pageRequest = new PageRequest(pageNo-1, PageConfig.SMALL_PAGE_SIZE ,new Sort(new Sort.Order(Sort.Direction.DESC, "createTime")));
+//        Page<Article> page = articleService.getByCustomer(pageRequest, customerId);
+        List<WechatArticleModel> wechatArticleModels = articleService.getSubscribeArticle(pageRequest, customerId);
+        jsonResult.setObj(wechatArticleModels);
         return jsonResult;
     }
 

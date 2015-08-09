@@ -342,6 +342,7 @@
          */
         function generatePagesArray(currentPage, collectionLength, rowsPerPage, paginationRange) {
             var pages = [];
+            console.log(collectionLength +"--------"+ rowsPerPage);
             var totalPages = Math.ceil(collectionLength / rowsPerPage);
             var halfWay = Math.ceil(paginationRange / 2);
             var position;
@@ -356,6 +357,7 @@
 
             var ellipsesNeeded = paginationRange < totalPages;
             var i = 1;
+
             while (i <= totalPages && i <= paginationRange) {
                 var pageNumber = calculatePageNumber(i, currentPage, paginationRange, totalPages);
 
@@ -471,9 +473,11 @@
         };
 
         this.setItemsPerPage = function(instanceId, val) {
+            console.log("-----------"+val);
             instances[instanceId].itemsPerPage = val;
         };
         this.getItemsPerPage = function(instanceId) {
+            console.log("*************"+instances[instanceId].itemsPerPage);
             return instances[instanceId].itemsPerPage;
         };
 

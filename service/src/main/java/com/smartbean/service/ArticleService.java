@@ -2,6 +2,7 @@ package com.smartbean.service;
 
 
 import com.smartbean.entity.Article;
+import com.smartbean.model.WechatArticleModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -80,6 +81,14 @@ public interface ArticleService {
      * **/
 
     public Page<Article> getByCustomer(Pageable page, String customerId);
+
+    /**
+     * 获取我关注的文章列表
+     * **/
+
+    public List<WechatArticleModel> getSubscribeArticle(Pageable page, String customerId);
+
+
 
     /**
      * 发布文章

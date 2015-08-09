@@ -6,6 +6,9 @@ import com.google.common.collect.Lists;
 import com.smartbean.common.*;
 import com.smartbean.entity.*;
 import com.smartbean.entity.Article;
+import com.smartbean.model.BriefArticleModel;
+import com.smartbean.model.BriefWechatModel;
+import com.smartbean.model.WechatArticleModel;
 import com.smartbean.repository.ArticleRepository;
 import com.smartbean.repository.CustomerRepository;
 import com.smartbean.service.*;
@@ -161,6 +164,45 @@ public class ArticleServiceImpl implements ArticleService {
     public Page<Article> getByCustomer(Pageable page, String customerId) {
         List<String> wechatIds = subscribeService.findWechatIdsByCustomerId(customerId);
         return articleRepository.findByWechatIdInAndStatus(wechatIds, ArticleStatus.PUBLISHED.toString(), page);
+    }
+
+    @Override
+    public List<WechatArticleModel> getSubscribeArticle(Pageable page, String customerId) {
+        List<WechatArticleModel> wechatArticleModels = Lists.newArrayList();
+        List<String> wechatIds = subscribeService.findWechatIdsByCustomerId(customerId);
+        for (String wechatId : wechatIds) {
+            Page<Article> articlesPage = articleRepository.findByWechatIdAndStatus(wechatId, ArticleStatus.PUBLISHED.toString(), page);
+
+            WechatArticleModel wechatArticleModel = new WechatArticleModel();
+            if (!articlesPage.isLast()) {
+                Wechat wechat = wechatService.findOne(wechatId);
+                List<Article> articles = articlesPage.getContent();
+                List<BriefArticleModel> briefArticleModels = Lists.newArrayList();
+                BriefWechatModel briefWechatModel = new BriefWechatModel();
+
+                for(Article article : articles){
+                    BriefArticleModel briefArticleModel = new BriefArticleModel();
+                    briefArticleModel.setReadTimes(article.getReadTimes());
+                    briefArticleModel.setTitle(article.getTitle());
+                    briefArticleModel.setWechatName(article.getWechat() == null ? "" : article.getWechat().getName());
+                    briefArticleModel.setLogo(article.getLogo());
+                    briefArticleModel.setAuthor(article.getAuthor());
+                    briefArticleModel.setId(article.getId());
+                    briefArticleModel.setBriefIntro(article.getBriefIntro());
+                    briefArticleModel.setDetailUrl(article.getDetailUrl());
+                    briefArticleModel.setSubjectName(article.getSubject() == null ? "":article.getSubject().getName());
+                    briefArticleModels.add(briefArticleModel);
+                }
+                wechatArticleModel.setBriefArticleModels(briefArticleModels);
+
+                briefWechatModel.setLogo(wechat.getLogo());
+                briefWechatModel.setWechatId(wechat.getId());
+                briefWechatModel.setWechatName(wechat.getName());
+                wechatArticleModel.setBriefWechatModel(briefWechatModel);
+            }
+            wechatArticleModels.add(wechatArticleModel);
+        }
+        return wechatArticleModels;
     }
 
     @Override

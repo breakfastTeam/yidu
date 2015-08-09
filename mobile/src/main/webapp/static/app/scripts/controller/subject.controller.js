@@ -3,16 +3,11 @@
  */
 angular.module('subjectController', ['service'])
     .controller('subjectCtrl', ['$scope', '$timeout', '$state', '$modal', 'ctx', 'SubjectRest', 'ArticleRest', function ($scope, $timeout, $state, $modal, ctx, subjectRest, articleRest) {
-        $scope.$watch('$viewContentLoaded', function() {
-            $timeout(function(){
-                $scope.$emit('hideSlider');
-            },1000)
-        });
 
         $scope.pageNo = 1;
         $scope.index = 0;
         subjectRest.customGET('list').then(function (data) {
-            $scope.$emit('changeOperateType', "subject", data.obj);
+            $scope.subjects = data.obj;
             var subjectId = data.obj[0].id;
             $scope.subjectId = subjectId;
             getSubjectArticles(subjectId, $scope.pageNo);
@@ -27,7 +22,6 @@ angular.module('subjectController', ['service'])
 
 
         function getSubjectArticles(subjectId, pageNo){
-            $scope.$emit('hideSlider');
             var reqData = {subjectId: subjectId, pageNo:pageNo};
             articleRest.customGET('getSubjectArticles', reqData).then(function (data) {
                 $scope.last = data.obj.last;

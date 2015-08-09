@@ -44,13 +44,10 @@ public class ExecutionInterceptor implements HandlerInterceptor {
         HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest()
                 .getSession();
+        String code = request.getParameter("code");
+        String uri = request.getRequestURI();
 
-
-
-//        String code = request.getParameter("code");
-//        String uri = request.getRequestURI();
-//        if(!uri.contains("weixin")){
-//
+//        if(!uri.contains("jumpToAuth")){
 //            if(StringUtils.isNotBlank(code)){
 //                WeixinConfig config = new WeixinConfig();
 //                OauthAPI oauthAPI = config.getOauthAPI(appId, appSecret);
@@ -69,7 +66,6 @@ public class ExecutionInterceptor implements HandlerInterceptor {
 //                return true;
 //            }
 //        }else{
-//            customerService.findAllFans();
 //            return true;
 //        }
         session.setAttribute(SessionData.CUSTOMER_ID.toString(), "2c9ba3814e6bd285014e6bd37615000f");

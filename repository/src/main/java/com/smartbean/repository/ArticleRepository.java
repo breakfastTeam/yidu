@@ -16,6 +16,8 @@ import java.util.List;
 public interface ArticleRepository extends JpaRepository<Article, String>, JpaSpecificationExecutor<Article> {
     Page<Article> findByWechatIdInAndStatus(List<String> wechatIds, String status, Pageable page);
 
+    Page<Article> findByWechatIdAndStatus(String wechatId, String status, Pageable page);
+
     Page<Article> findByIdNotInAndStatusAndCreateTimeGreaterThanEqual(List<String> id, String status,DateTime createTime, Pageable page);
 
     Page<Article> findByIdNotInAndWechatIdInAndStatusAndCreateTimeGreaterThanEqual(List<String> id, List<String> wechatIds, String status,DateTime createTime, Pageable page);

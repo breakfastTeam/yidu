@@ -13,7 +13,7 @@ public class ManageApplication {
         Server jettyServer = new Server();
         SocketConnector connector = new SocketConnector();
         connector.setHeaderBufferSize(10240);
-        connector.setPort(8080);
+        connector.setPort(8081);
         Connector[] connectors = {connector};
         jettyServer.setConnectors(connectors);
         WebAppContext wah = new WebAppContext();

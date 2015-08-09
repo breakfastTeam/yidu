@@ -5,10 +5,15 @@ app.config(["$stateProvider", "ctx", function ($stateProvider, ctx) {
             controller: 'subjectCtrl',
             templateUrl: ctx + '/views/content/subject.html'
         })
-        .state('subscribe', {
-            url: '/subscribe',
-            controller: 'subscribeCtrl',
-            templateUrl: ctx + '/views/content/subscribe.html'
+        .state('find', {
+            url: '/find',
+            controller: 'findCtrl',
+            templateUrl: ctx + '/views/content/find.html'
+        })
+        .state('findWechat', {
+            url: '/findWechat/:wechatTypeId',
+            controller: 'findWechatCtrl',
+            templateUrl: ctx + '/views/content/findWechats.html'
         })
         .state('searchWechat', {
             url: '/searchWechat',
@@ -35,9 +40,9 @@ app.config(["$stateProvider", "ctx", function ($stateProvider, ctx) {
             controller: 'searchWechatFromInternetCtrl',
             templateUrl: ctx + '/views/content/searchWechatFromInternet.html'
         })
-        .state('subscribeContent', {
-            url: '/subscribeContent',
-            controller: 'subscribeContentCtrl',
-            templateUrl: ctx + '/views/content/subscribeContent.html'
+        .state('subscribe', {
+            url: '/subscribe',
+            controller: 'subscribeCtrl',
+            templateUrl: ctx + '/views/content/subscribe.html'
         })
 }])

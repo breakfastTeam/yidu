@@ -1,0 +1,46 @@
+<!--<div class="panel panel-default">-->
+    <!--<div class="panel-body">-->
+        <!--<div ng-repeat="wechat in wechats">-->
+            <!--<div class="media" ng-click="wechatDetail(wechat.id)">-->
+                <!--<a class="pull-left" href="javascript:;">-->
+                    <!--<img alt="" src="{{wechat.logo}}" class="img-rounded img64_64">-->
+                <!--</a>-->
+
+                <!--<div class="media-body position-relative height-64">-->
+                    <!--<label class="media-heading">{{wechat.name}}</label>-->
+                    <!--<a href="javascript:void(0);" ng-click="operateSubscribe(wechat.id, wechat.sub, $index, $event)"-->
+                       <!--ng-class="getBtnClass(wechat.sub)"><i ng-class="getIconClass(wechat.sub)"></i></a>-->
+                    <!--<br/>-->
+                <!--<span class="position-absolute bottom-0">-->
+                    <!--<small>{{wechat.name}}</small>-->
+                <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="divider divider-dashed divider-sm pull-in"></div>-->
+        <!--</div>-->
+        <!--<input type="hidden" ng-bind="{{pageNo}}"/>-->
+        <!--<button ng-click="loadMore()" ng-if="!last" type="button" class="btn btn-default btn-block">加载更多</button>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="container" style="padding-right:0px; padding-left: 0px;">
+    <ul id="filters" class="clearfix">
+        <li ng-repeat="wechatType in wechatTypes" ng-click="toggleLevel($index)">
+            <span ng-class="{active:$index==index}">{{wechatType.firstLevel.name}}</span>
+        </li>
+    </ul>
+
+    <div id="portfoliolist">
+        <div ng-repeat="wechatSecondLevel in wechatSecondLevels" class="portfolio app mix_all" ng-click="goToFindWechat(wechatSecondLevel.id)" style="display:inline-block;">
+            <div class="portfolio-wrapper">
+                <img src="http://www.psd-designer.eu/Work/Curiosity/img/portfolios/web/4.jpg" alt="" style="top: 0px;">
+                <div class="label" style="bottom: -25px;">
+                    <div class="label-text">
+                        <span class="text-category">{{wechatSecondLevel.name}}</span>
+                    </div>
+                    <div class="label-bg"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
