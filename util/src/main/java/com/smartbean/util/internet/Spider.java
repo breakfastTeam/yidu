@@ -159,7 +159,8 @@ public class Spider {
 
             String logo = resultWrapper.get(0).getElementsByClass("img-box").get(0).getElementsByTag("img").get(0).attr("src");
             String name = resultWrapper.get(0).getElementsByClass("txt-box").get(0).getElementById("weixinname").text();
-            String account = resultWrapper.get(0).getElementsByClass("txt-box").get(0).getElementsByTag("h4").get(0).text().split("：")[1];
+            String accountTemp = resultWrapper.get(0).getElementsByClass("txt-box").get(0).getElementsByTag("h4").get(0).text();
+            String account = accountTemp.substring(4, accountTemp.length()-1);
             Elements infos = resultWrapper.get(0).getElementsByClass("txt-box").get(0).getElementsByClass("sp-txt");
             String intro = resultWrapper.get(0).getElementsByClass("txt-box").get(0).getElementsByClass("sp-txt").get(0).text();
             String company = "";
@@ -226,18 +227,16 @@ public class Spider {
             resultWrapper.getElementsByTag("script").remove();
             resultWrapper.getElementById("activity-name").remove();
             resultWrapper.getElementsByClass("rich_media_meta_list").remove();
-            Elements imgs = resultWrapper.getElementsByAttribute("data-src");
-            for(Element img : imgs){
-                img.attr("src", sogouStore+img.attr("data-src"));
-                img.removeAttr("data-src");
+            Elements medias = resultWrapper.getElementsByAttribute("data-src");
+            for(Element media : medias){
+                if(media.hasAttr("allowfullscreen")){
+                    media.attr("src", media.attr("data-src"));
+                    media.removeAttr("data-src");
+                }else{
+                    media.attr("src", sogouStore + media.attr("data-src"));
+                    media.removeAttr("data-src");
+                }
             }
-
-            Elements videos = resultWrapper.getElementsByAttribute("data-src");
-            for(Element video : videos){
-                video.attr("src", sogouStore+video.attr("data-src"));
-                video.removeAttr("data-src");
-            }
-
             article = resultWrapper.toString();
         } catch (Exception e) {
             e.printStackTrace();
@@ -290,7 +289,7 @@ private String getPageContent(String url) {
         Spider s = new Spider();
 //        s.searchWechatFromSogou("36");
 //        s.getWechatLastArticlesFromSogou("oIWsFt5S-CcRNFhBp0VHuY7C32v4");
-//        s.getArticle("http://mp.weixin.qq.com/s?__biz=MzA4NzAxNzY5NQ==&mid=204282681&idx=3&sn=1d5ee82e9f1d164be1da7ac0451c3355&3rd=MzA3MDU4NTYzMw==&scene=6#rd");
+//        s.getArticle("http://mp.weixin.qq.com/s?__biz=MzAwMTAzMzY3Mg==&mid=212656083&idx=2&sn=b4d5bbadb39cc3bd8ddfe555b162ea4f&3rd=MzA3MDU4NTYzMw==&scene=6#rd");
 //        s.getHotSubject();
 //        s.searchArticle("红包");
 //        s.getSubject();

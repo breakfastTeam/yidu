@@ -313,13 +313,27 @@ public class ArticleServiceImpl implements ArticleService {
                 article.setTitle(webArticle[1]);
                 article.setBriefIntro(webArticle[2]);
                 article.setDetailUrl(webArticle[3]);
+                String[] wechatStr = spider.getWechatFromSogou(webArticle[4]);
+                Wechat wechat = new Wechat();
+                wechat.setLogo(wechatStr[0]);
+                wechat.setName(wechatStr[1]);
+                wechat.setCompany(wechatStr[2]);
+                wechat.setAccount(wechatStr[3]);
+                wechat.setBriefIntro(wechatStr[4]);
+                wechat.setOpenId(webArticle[4]);
+                wechat.setCreateTime(DateTime.now());
+                wechatService.save(wechat);
+
                 article.setOpenId(webArticle[4]);
                 article.setStatus(ArticleStatus.UNPUBLISHED.toString());
                 article.setReadTimes(0);
                 String content = spider.getArticle(webArticle[3]);
                 article.setContent(content);
+                article.setWechatId(wechat.getId());
                 article.setCreateTime(DateTime.now());
                 articles.add(article);
+
+
             }
         }
         articleRepository.save(articles);

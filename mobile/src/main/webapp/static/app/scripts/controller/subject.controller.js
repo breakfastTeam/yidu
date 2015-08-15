@@ -13,7 +13,10 @@ angular.module('subjectController', ['service'])
             getSubjectArticles(subjectId, $scope.pageNo);
 
             $scope.$watch('$viewContentLoaded', function() {
-                gmu.$('#navigator').navigator();
+                $timeout(function(){
+                    gmu.$('#navigator').navigator();
+                },1);
+
             });
 
         });
