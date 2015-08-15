@@ -44,8 +44,8 @@ public class Spider {
                 String[] result = new String[6];
                 String logo = el.getElementsByClass("img-box").get(0).getElementsByTag("img").get(0).attr("src");
                 String openId = el.attr("href").split("=")[1];
-                String name = el.getElementsByClass("txt-box").get(0).getElementsByTag("h3").text();
-                String wechatAccount = el.getElementsByClass("txt-box").get(0).getElementsByTag("h4").text().split("：")[1];
+                String name = el.getElementsByClass("txt-box").get(0).getElementsByTag("h3").text().trim();
+                String wechatAccount = el.getElementsByClass("txt-box").get(0).getElementsByTag("h4").text().split("：")[0];
                 Elements intros = el.getElementsByClass("txt-box").get(0).getElementsByTag("p");
                 result[0] = logo;
                 result[1] = openId;
@@ -231,6 +231,13 @@ public class Spider {
                 img.attr("src", sogouStore+img.attr("data-src"));
                 img.removeAttr("data-src");
             }
+
+            Elements videos = resultWrapper.getElementsByAttribute("data-src");
+            for(Element video : videos){
+                video.attr("src", sogouStore+video.attr("data-src"));
+                video.removeAttr("data-src");
+            }
+
             article = resultWrapper.toString();
         } catch (Exception e) {
             e.printStackTrace();

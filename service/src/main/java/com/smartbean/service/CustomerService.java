@@ -29,4 +29,7 @@ public interface CustomerService {
      * **/
     public List<Customer> findAllFans();
 
+
+    public Customer findOne(String customerId);
+
 }

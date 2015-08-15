@@ -2,6 +2,7 @@ package com.smartbean.service;
 
 
 import com.smartbean.entity.Article;
+import com.smartbean.model.BriefArticleModel;
 import com.smartbean.model.WechatArticleModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,6 +45,10 @@ public interface ArticleService {
      * **/
     public Page<Article> getBySubjectId(Pageable page, String subjectId);
 
+    /**
+     * 获取和该微信号同类微信号的最新文章,如果微信号为空则获取相关主题下的最新文章，如果主题为空则获取系统中最新文章
+     * **/
+    public List<BriefArticleModel> getSimilarLatestArticle(String articleId, String wechatId, String subjectId);
 
     /**
      * 根据公众号获取文章
@@ -134,7 +139,6 @@ public interface ArticleService {
      * 获取我订阅的公众号的未推送的文章
      * **/
     public Page<Article> getUnpushedAndUnreadWechatArticles(Pageable page, String customerId);
-
 
 
     /**

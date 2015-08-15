@@ -29,10 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Tuple;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.persistence.criteria.*;
 import java.util.List;
 import java.util.concurrent.*;
@@ -115,6 +112,62 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<BriefArticleModel> getSimilarLatestArticle(String articleId, String wechatId, String subjectId) {
+        List<BriefArticleModel> articles = Lists.newArrayList();
+        List<Object[]> result;
+        if(StringUtils.isNotBlank(wechatId)){
+            StringBuffer sb = new StringBuffer();
+            sb.append("select a.id, a.title ");
+            sb.append("from t_article a ");
+            sb.append("INNER JOIN t_wechat w on w.id = a.wechat_id ");
+            sb.append("INNER JOIN t_wechat_type wt on wt.id = w.type_id ");
+            sb.append("where wechat_id = ?0 and a.id<>?1 ");
+            sb.append("order by create_time desc");
+            Query query = em.createNativeQuery(sb.toString());
+            query.setParameter(0, wechatId);
+            query.setParameter(1, articleId);
+            query.setFirstResult(0);
+            query.setMaxResults(5);
+            result = query.getResultList();
+        }else if(StringUtils.isNotBlank(subjectId)){
+            StringBuffer sb = new StringBuffer();
+            sb.append("select a.id, a.title ");
+            sb.append("from t_article a ");
+            sb.append("where a.subject_id = ?0 and a.id <> ?1 ");
+            sb.append("order by create_time desc");
+            Query query = em.createNativeQuery(sb.toString());
+            query.setParameter(0, subjectId);
+            query.setParameter(1, articleId);
+            query.setFirstResult(0);
+            query.setMaxResults(5);
+            result = query.getResultList();
+
+        }else{
+            StringBuffer sb = new StringBuffer();
+            sb.append("select a.id, a.title ");
+            sb.append("from t_article a ");
+            sb.append("where a.id <> ?0 ");
+            sb.append("order by create_time desc");
+            Query query = em.createNativeQuery(sb.toString());
+            query.setParameter(0, articleId);
+            query.setFirstResult(0);
+            query.setMaxResults(5);
+            result = query.getResultList();
+
+        }
+        for(Object[] obj : result){
+            BriefArticleModel briefArticleModel = new BriefArticleModel();
+            String id = obj[0].toString();
+            String title = obj[1].toString();
+            briefArticleModel.setId(id);
+            briefArticleModel.setTitle(title);
+            articles.add(briefArticleModel);
+        }
+        return articles;
+    }
+
+
+    @Override
     public Page<Article> getByWechat(Pageable page, String wechatId) {
         Article article = new Article();
         article.setStatus(ArticleStatus.PUBLISHED.toString());
@@ -191,6 +244,8 @@ public class ArticleServiceImpl implements ArticleService {
                     briefArticleModel.setBriefIntro(article.getBriefIntro());
                     briefArticleModel.setDetailUrl(article.getDetailUrl());
                     briefArticleModel.setSubjectName(article.getSubject() == null ? "":article.getSubject().getName());
+                    briefArticleModel.setCreateTime(article.getCreateTime().toString("yyyy-MM-dd HH:mm:ss"));
+
                     briefArticleModels.add(briefArticleModel);
                 }
                 wechatArticleModel.setBriefArticleModels(briefArticleModels);
