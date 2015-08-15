@@ -1,11 +1,26 @@
-<div class="container full-width" style="padding-right:0px; padding-left: 0px;">
+<!--<div id="navigator" class="container full-width" style="padding-right:0px; padding-left: 0px;">
+
 <ul id="filters" class="clearfix">
     <li ng-repeat="subject in subjects" ng-click="getArticles(subject.id, $index)">
         <span ng-class="{active:$index==index}">{{subject.name}}</span>
     </li>
 </ul>
+
+</div>-->
+<div class="container full-width" style="padding-right:0px; padding-left: 0px;">
+    <div id="navigator">
+        <ul id="filters" class="clearfix">
+            <li ng-repeat="subject in subjects" ng-click="getArticles(subject.id, $index)">
+                <span ng-class="{active:$index==index}">{{subject.name}}</span>
+            </li>
+        </ul>
+    </div>
 </div>
-<div class="panel panel-default" ng-repeat="article in articles">
+
+<script type="text/javascript">
+   setTimeout(function(){gmu.$('#navigator').navigator();},3000);
+</script>
+<div class="panel panel-dfault" ng-repeat="article in articles">
     <div class="panel-body" ng-click="goToDetail(article.id)">
         <div class="row">
             <div class="col-md-12">

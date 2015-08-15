@@ -1792,7 +1792,7 @@ hr {
     visibility: hidden;
 }
 
-#filters {
+/*#filters {
     padding: 0;
     list-style: none;
     border-bottom: 1px solid #F0F0F0;
@@ -1821,7 +1821,7 @@ hr {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-}
+}*/
 
 #portfoliolist {
     margin-left: 1%;
@@ -3067,3 +3067,100 @@ a.bg-success {
 .non-display{
     display:none;
 }
+
+/*Subject navigator CSS  Begin*/
+
+/** 一级导航样式 */
+.ui-scroller {
+    float: left;
+    width: auto;
+}
+@media all and (min-device-width: 768px) and (max-device-width: 1024px){
+    .ui-navigator-list,
+    .ui-navigator-list li {
+        list-style: none;
+
+    }}
+.ui-navigator-list {
+    /*width: 100%;*/
+}
+.ui-navigator-list li{
+    display: inline-block;
+    /*display:inline-block; *display:inline; zoom:1;*/
+    white-space:nowrap;/*内容不换行*/
+    padding: 0 15px;
+}
+.ui-scroller .ui-navigator-list {
+    /*display: table;
+    table-layout: fixed;/*宽度可控*/
+    white-space:nowrap;/*内容不换行*/
+    /*width: auto;*/
+}
+
+
+.ui-navigator {
+    display: -webkit-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.ui-navigator .ui-navigator-list, .ui-navigator .ui-navigator-fix {
+    display: -webkit-box;
+    -webkit-box-flex: 0;
+}
+
+.ui-navigator .ui-navigator-list li{
+    -webkit-box-flex: 0;
+}
+
+.ui-navigator .ui-navigator-list li span, .ui-navigator .ui-navigator-fix{
+    display: -webkit-box;
+    -webkit-box-sizing: border-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+.ui-navigator .ui-navigator-wrapper{
+    -webkit-box-flex: 0;
+}
+
+.ui-navigator .ui-navigator-list, .ui-navigator .ui-navigator-fix {
+    display: -webkit-box;
+    -webkit-box-flex: 0;      /*去掉-webkit-box-flex属性，可滑动tab不平分*/
+}
+
+.ui-navigator .ui-navigator-list li{
+    -webkit-box-flex: 0;
+}
+#filters {
+    float: left;
+    /*padding: 0;*/
+    /*list-style: none;*/
+    border-bottom: 1px solid #F0F0F0;
+}
+#filters li {
+    /*float: left;*/
+    /*width: 25%;*/
+    font-size: 16px;
+    text-align: center;
+}
+#filters li span {
+    /*display: block;*/
+    display: inline-block;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: #5C5C5C;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+#filters li span.active {
+    background: #fe0000;
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+/*Subject navigator CSS  End*/
