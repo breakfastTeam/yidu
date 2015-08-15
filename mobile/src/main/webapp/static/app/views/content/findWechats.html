@@ -20,8 +20,9 @@
             <div class="divider divider-dashed divider-sm pull-in"></div>
         </div>
         <input type="hidden" ng-bind="{{pageNo}}"/>
-        <button ng-click="loadMore()" ng-if="!last" type="button" class="btn btn-default btn-block">加载更多</button>
-        <button ng-click="goToSearchWechat()" ng-if="!hasContent" type="button" class="btn btn-default btn-block">查询信息</button>
 
     </div>
 </div>
+
+<button ng-click="loadMore()" ng-if="!last" type="button" class="btn btn-default btn-block">加载更多</button>
+<button ng-click="goToSearchWechat()" ng-if="!hasContent" type="button" class="btn btn-success btn-block">查询信息</button>

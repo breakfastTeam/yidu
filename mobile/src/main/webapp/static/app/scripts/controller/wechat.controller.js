@@ -79,11 +79,6 @@ angular.module('wechatController', ['service'])
         }])
     .controller('searchWechatFromInternetCtrl', ['$scope','$stateParams', '$timeout', '$state', '$modal', 'ctx',  'SubscribeRest', 'WechatRest',
         function ($scope,$stateParams, $timeout, $state, $modal, ctx, subscribeRest, wechatRest) {
-            $scope.$emit('hideItem');
-            $scope.$emit('hideSearch');
-            $scope.$emit('hideSlider');
-            $scope.$emit('setHeaderTitle',"搜索公众号");
-
             $scope.keyword = $stateParams.name;
             $scope.search = function(){
                 var reqData = {name: $scope.keyword};
@@ -119,7 +114,7 @@ angular.module('wechatController', ['service'])
                     'btn':true,
                     'pull-right':true,
                     'bg-success':!isSubscribe,
-                    'btn-danger':isSubscribe
+                    'btn-info':isSubscribe
                 };
             };
             /**
@@ -135,10 +130,6 @@ angular.module('wechatController', ['service'])
         }])
     .controller('wechatDetailCtrl', ['$scope','$stateParams', '$timeout', '$state', '$modal', 'ctx',  'SubscribeRest', 'WechatRest','ArticleRest',
         function ($scope,$stateParams, $timeout, $state, $modal, ctx, subscribeRest, wechatRest, articleRest) {
-            $scope.$emit('hideItem');
-            $scope.$emit('hideSearch');
-            $scope.$emit('hideSlider');
-
             wechatRest.customGET('wechatDetail', {id:$stateParams.wechatId}).then(function (data) {
                 $scope.wechat = data.obj;
             });

@@ -1,22 +1,27 @@
 <div ng-repeat="wechatArticleModel in wechatArticleModels track by $index">
+
     <div class="bubble">
         <img src="{{wechatArticleModel.briefWechatModel.logo}}" class="img-circle">
     </div>
     <div class="panel panel-default">
         <div class="panel-body">
             <div>
-                <div ng-repeat="briefArticleModel in wechatArticleModel.briefArticleModels" ng-click="goToDetail(article.id)" class="pd-t10">
+                <div ng-repeat="briefArticleModel in wechatArticleModel.briefArticleModels"
+                     ng-click="goToDetail(briefArticleModel.id)" class="pd-t5">
                     <div class="media " class="flip-in">
                         <a class="pull-right" href="javascript:;">
                             <img alt="" src="{{briefArticleModel.logo}}" class="img64_64">
                         </a>
 
                         <div class="media-body  position-relative height-64">
-                            <h5 class="media-heading">{{briefArticleModel.title}}</h5>
-                            <br/>
+                            <h5 class="media-heading">{{briefArticleModel.title}}{{briefArticleModel.timeType}}</h5>
+                            <span class="ti-alarm-clock">
+                                {{briefArticleModel.createTime}}
+                            </span>
+
                         </div>
                     </div>
-                    <div class="divider divider-dashed divider-sm pull-in"></div>
+                    <div class="divider divider-dashed divider-sm pull-in mrg-t5"></div>
                 </div>
 
             </div>
@@ -28,4 +33,4 @@
 <button ng-if="!last" ng-click="loadMore()" type="button" class="btn btn-default btn-block">
     加载更多
 </button>
-        </br>
+</br>

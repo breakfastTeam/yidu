@@ -31,7 +31,7 @@ app.config(["$stateProvider", "ctx", function ($stateProvider, ctx) {
             templateUrl: ctx + '/views/content/wechatArticles.html'
         })
         .state('articleDetail', {
-            url: '/articleDetail/:articleId',
+            url: '/articleDetail/:articleId/:shareFrom',
             controller: 'articleDetailCtrl',
             templateUrl: ctx + '/views/content/articleDetail.html'
         })

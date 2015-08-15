@@ -46,9 +46,24 @@ public class ExecutionInterceptor implements HandlerInterceptor {
                 .getSession();
         String code = request.getParameter("code");
         String uri = request.getRequestURI();
+        String yiduType = request.getParameter("yiduType");
+        String header = request.getHeader("User-Agent");
+        HttpServletRequest httpRequest=(HttpServletRequest)request;
+        httpRequest.getRequestURL();
+        httpRequest.getContextPath();
+        httpRequest.getPathInfo();
+        httpRequest.getLocalAddr();
+        httpRequest.getRemoteAddr();
+        String strBackUrl = "http://" + request.getServerName() //服务器地址
+                + ":"
+                + request.getServerPort()           //端口号
+                + httpRequest.getContextPath()      //项目名称
+                + httpRequest.getServletPath()      //请求页面或其他地址
+                + "?" + (httpRequest.getQueryString()); //参数
 
-//        if(!uri.contains("jumpToAuth")){
-//            if(StringUtils.isNotBlank(code)){
+
+//        if(!uri.contains("jumpToAuth")&&!uri.contains("weixin")){
+//            if(StringUtils.isNotBlank(code)&&StringUtils.equals(yiduType, "auth")){
 //                WeixinConfig config = new WeixinConfig();
 //                OauthAPI oauthAPI = config.getOauthAPI(appId, appSecret);
 //                OauthGetTokenResponse rs = oauthAPI.getToken(code);

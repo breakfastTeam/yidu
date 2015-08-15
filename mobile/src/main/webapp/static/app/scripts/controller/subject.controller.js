@@ -11,7 +11,13 @@ angular.module('subjectController', ['service'])
             var subjectId = data.obj[0].id;
             $scope.subjectId = subjectId;
             getSubjectArticles(subjectId, $scope.pageNo);
+
+            $scope.$watch('$viewContentLoaded', function() {
+                swipe();
+            });
+
         });
+
 
         $scope.getArticles = function(subjectId, myIndex){
             $scope.subjectId = subjectId;
@@ -24,6 +30,7 @@ angular.module('subjectController', ['service'])
         function getSubjectArticles(subjectId, pageNo){
             var reqData = {subjectId: subjectId, pageNo:pageNo};
             articleRest.customGET('getSubjectArticles', reqData).then(function (data) {
+                console.log(data.obj.content);
                 $scope.last = data.obj.last;
                 if($scope.pageNo>1){
                     $scope.articles = $scope.articles.concat(data.obj.content);
@@ -39,7 +46,43 @@ angular.module('subjectController', ['service'])
         }
 
         $scope.goToDetail = function (articleId) {
-            $state.go("articleDetail", {articleId:articleId});
+            var customerId = window.sessionStorage.getItem("customerId")
+            $state.go("articleDetail", {articleId:articleId, shareFrom:customerId});
+        }
+
+        /**
+         * 左右滑动tab页面
+         * **/
+        function swipe(){
+            var n=$('#filters li').size();
+            var wh=100*n+"%";
+            $('#filters').width(wh);
+            var lt=(100/n/4);
+            var lt_li=lt+"%";
+            $('#filters li').width(lt_li);
+            var y=0;
+            var w=n/2;
+            $("#filters").swipe( {
+                swipeLeft:function() {
+                    if(y==-lt*w){
+                        alert('已经到头啦');
+                    }else{
+                        y=y-lt;
+                        var t=y+"%";
+                        $(this).css({'-webkit-transform':"translate("+t+")",'-webkit-transition':'500ms linear'} );
+                    }
+                },
+                swipeRight:function() {
+                    if(y==0){
+                        alert('已经到头啦')
+                    }else{
+                        y=y+lt;
+                        var t=y+"%";
+                        $(this).css({'-webkit-transform':"translate("+t+")",'-webkit-transition':'500ms linear'} );
+                    }
+
+                }
+            });
         }
 
     }])

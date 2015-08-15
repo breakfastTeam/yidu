@@ -18,7 +18,7 @@ public class WeixinAuthController {
     public String jumpToAuth(@RequestParam String appId, @RequestParam String appSecret, @RequestParam String redirectUrl){
         WeixinConfig config = new WeixinConfig();
         OauthAPI oauthAPI = config.getOauthAPI(appId, appSecret);
-        String jumpUrl = oauthAPI.getOauthPageUrl(redirectUrl, OauthScope.SNSAPI_BASE, "");
+        String jumpUrl = oauthAPI.getOauthPageUrl(redirectUrl+"?yiduType=auth", OauthScope.SNSAPI_BASE, "");
         return"redirect:"+jumpUrl;
     }
 

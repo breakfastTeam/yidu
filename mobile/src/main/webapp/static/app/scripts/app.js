@@ -5,6 +5,7 @@ var app = angular.module('dongtai', [
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
+    'infinite-scroll',
     'angular-loading-bar',
     'constants',
     'restangular',

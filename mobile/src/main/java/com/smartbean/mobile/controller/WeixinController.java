@@ -1,6 +1,8 @@
 package com.smartbean.mobile.controller;
 
+import com.github.sd4324530.fastweixin.api.JsAPI;
 import com.github.sd4324530.fastweixin.api.UserAPI;
+import com.github.sd4324530.fastweixin.api.response.GetSignatureResponse;
 import com.github.sd4324530.fastweixin.api.response.GetUserInfoResponse;
 import com.github.sd4324530.fastweixin.message.Article;
 import com.github.sd4324530.fastweixin.message.BaseMsg;
@@ -12,7 +14,9 @@ import com.github.sd4324530.fastweixin.message.req.TextReqMsg;
 import com.google.common.collect.Lists;
 import com.smartbean.common.CustomerStatus;
 import com.smartbean.entity.Customer;
+import com.smartbean.mobile.model.WeixinJSModel;
 import com.smartbean.service.CustomerService;
+import com.smartbean.util.fastjson.JsonResult;
 import com.smartbean.util.internet.Spider;
 import com.smartbean.util.weixin.WeixinConfig;
 import org.joda.time.DateTime;
@@ -22,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -36,6 +41,9 @@ public class WeixinController extends WeixinControllerSupport {
 
     @Value("#{configProperties['host']}")
     private String host;
+    @Value("#{configProperties['name']}")
+    private String name;
+
     @Value("#{configProperties['appid']}")
     private String appId;
     @Value("#{configProperties['appsecret']}")
@@ -125,4 +133,21 @@ public class WeixinController extends WeixinControllerSupport {
     protected String getToken() {
         return token;
     }
+
+    @ResponseBody
+    @RequestMapping(value = {"/signature"})
+    public JsonResult signature(){
+        JsonResult jsonResult = new JsonResult();
+        WeixinConfig config = new WeixinConfig();
+        JsAPI jsAPI = config.getJsAPI(appId, appSecret);
+        GetSignatureResponse response = jsAPI.getSignature(host);
+        WeixinJSModel jsModel = new WeixinJSModel();
+        jsModel.setSignature(response.getSignature());
+        jsModel.setNonceStr(response.getNoncestr());
+        jsModel.setTimestamp(response.getTimestamp());
+        jsModel.setAppId(appId);
+        jsonResult.setObj(jsModel);
+        return jsonResult;
+    }
+
 }
