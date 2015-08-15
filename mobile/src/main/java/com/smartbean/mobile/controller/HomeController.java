@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
     @RequestMapping(value = {"/"})
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView();

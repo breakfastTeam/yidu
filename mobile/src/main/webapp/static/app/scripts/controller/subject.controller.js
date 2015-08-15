@@ -11,7 +11,16 @@ angular.module('subjectController', ['service'])
             var subjectId = data.obj[0].id;
             $scope.subjectId = subjectId;
             getSubjectArticles(subjectId, $scope.pageNo);
+
+            $scope.$watch('$viewContentLoaded', function() {
+                $timeout(function(){
+                    gmu.$('#navigator').navigator();
+                },1);
+
+            });
+
         });
+
 
         $scope.getArticles = function(subjectId, myIndex){
             $scope.subjectId = subjectId;
@@ -24,6 +33,7 @@ angular.module('subjectController', ['service'])
         function getSubjectArticles(subjectId, pageNo){
             var reqData = {subjectId: subjectId, pageNo:pageNo};
             articleRest.customGET('getSubjectArticles', reqData).then(function (data) {
+                console.log(data.obj.content);
                 $scope.last = data.obj.last;
                 if($scope.pageNo>1){
                     $scope.articles = $scope.articles.concat(data.obj.content);
@@ -39,7 +49,9 @@ angular.module('subjectController', ['service'])
         }
 
         $scope.goToDetail = function (articleId) {
-            $state.go("articleDetail", {articleId:articleId});
+            var customerId = window.sessionStorage.getItem("customerId")
+            $state.go("articleDetail", {articleId:articleId, shareFrom:customerId});
         }
+
 
     }])

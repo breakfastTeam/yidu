@@ -83,7 +83,7 @@ public class Wechat implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "account", unique = false, nullable = true, insertable = true, updatable = true, length = 64)
+	@Column(name = "account", unique = false, nullable = true, insertable = true, updatable = true, length = 128)
 	public String getAccount() {
 		return this.account;
 	}

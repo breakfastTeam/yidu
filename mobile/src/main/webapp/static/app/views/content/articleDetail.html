@@ -1,19 +1,51 @@
-<div class="panel panel-default">
+<div class="panel panel-default mgb-0" infinite-scroll="loadMore()" infinite-scroll-immediate-check=true>
     <div class="panel-body">
-            <div class="media">
-                <div class="media-body position-relative height-64">
-                    <label class="media-heading">{{article.title}}</label>
-                    <br/>
-                    <span class="position-absolute bottom-0">
-                        <small>阅读数：{{article.readTimes}}</small>
-                    </span>
+        <div class="media">
+            <div class="media-body position-relative height-64">
+                <label class="media-heading">{{article.title}}</label>
+                <br/>
+
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-md-6 pull-right">
+                        <span class="ti-alarm-clock">
+                            {{article.createTime}}
+                        </span>
+                    </div>
+                    <div class="col-md-6">
+                        <span ng-if="article.author" class="ti-user">
+                            {{article.author}}
+                        </span>
+                        <span ng-if="!article.author" class="ti-user">
+                            佚名
+                        </span>
+
+                        <span class="ti-eye">{{article.readTimes}}</span>
+                    </div>
+
                 </div>
             </div>
-            <div class="divider divider-dashed divider-sm pull-in"></div>
-        <div class="media">
-            <div class="media-body" ng-bind-html="article.content|to_trusted">
-            </div>
+        </div>
+        <div class="divider divider-dashed divider-sm pull-in"></div>
+    </div>
+    <div class="media">
+        <div class="media-body" ng-bind-html="article.content|to_trusted">
         </div>
     </div>
 </div>
-
+相关阅读
+<div class="panel panel-default mgb-0">
+    <div class="panel-body">
+        <div ng-repeat="article in similarArticle">
+        <div class="row" ng-click="goToDetail(article.id)" >
+            <div class="col-md-12 mgt-10">
+                <article class="media-box">
+                    <div class="media-box-body">
+                        <label class="media-heading ng-binding">{{article.title}}</label>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="divider divider-dashed divider-sm pull-in"></div>
+        </div>
+    </div>
+</div>

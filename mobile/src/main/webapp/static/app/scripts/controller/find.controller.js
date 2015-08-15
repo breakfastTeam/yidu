@@ -9,6 +9,9 @@ angular.module('findController', ['service'])
             $scope.pageNo = 1;
             wechatTypeRest.customGET('getWechatType').then(function (data) {
                 $scope.wechatTypes = data.obj;
+                $scope.$watch('$viewContentLoaded', function() {
+                    swipe();
+                });
                 toggleLevelInner(0);
                 $scope.$watch("$viewContentLoaded",function(){
                     $timeout(function(){gmu.$('#navigator').navigator();},1);
@@ -29,6 +32,42 @@ angular.module('findController', ['service'])
             $scope.goToFindWechat = function(wechatTypeId){
                 $state.go("findWechat", {wechatTypeId:wechatTypeId});
             }
+
+            /**
+             * 左右滑动tab页面
+             * **/
+            function swipe(){
+                var n=$('#filters li').size();
+                var wh=100*n+"%";
+                $('#filters').width(wh);
+                var lt=(100/n/4);
+                var lt_li=lt+"%";
+                $('#filters li').width(lt_li);
+                var y=0;
+                var w=n/2;
+                $("#filters").swipe( {
+                    swipeLeft:function() {
+                        if(y==-lt*w){
+                            alert('已经到头啦');
+                        }else{
+                            y=y-lt;
+                            var t=y+"%";
+                            $(this).css({'-webkit-transform':"translate("+t+")",'-webkit-transition':'500ms linear'} );
+                        }
+                    },
+                    swipeRight:function() {
+                        if(y==0){
+                            alert('已经到头啦')
+                        }else{
+                            y=y+lt;
+                            var t=y+"%";
+                            $(this).css({'-webkit-transform':"translate("+t+")",'-webkit-transition':'500ms linear'} );
+                        }
+
+                    }
+                });
+            }
+
         }])
     .controller('findWechatCtrl',['$scope','$state', '$stateParams','SubscribeRest', 'WechatRest',
         function($scope, $state,$stateParams,subscribeRest, wechatRest){
@@ -78,7 +117,7 @@ angular.module('findController', ['service'])
                 'btn':true,
                 'pull-right':true,
                 'bg-success':!isSubscribe,
-                'btn-warning':isSubscribe
+                'btn-info':isSubscribe
             };
         };
         /**
@@ -96,7 +135,7 @@ angular.module('findController', ['service'])
             $state.go('wechatDetail',{wechatId: id});
         };
         $scope.goToSearchWechat = function(){
-            $state.go('searchWechat');
+            $state.go('searchWechatFromInternet');
         }
 
     }])

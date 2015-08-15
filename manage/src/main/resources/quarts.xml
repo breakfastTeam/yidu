@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+=<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -16,8 +16,8 @@
     <bean id="grabHotArticleFromSogouTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="grabHotArticleFromSogouJobDetail"/>
-        <property name="cronExpression" value="0 0/20 * * * ?"/>
-        <!-- 每10分钟触发一次 0 0/1 * * * ?-->
+        <property name="cronExpression" value="0 0 0/3 * * ?"/>
+        <!-- 每3个小时抓取一次搜狗热门文章-->
     </bean>
 
 
@@ -32,7 +32,7 @@
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="grabWechatArticleFromSogouJobDetail"/>
         <property name="cronExpression" value="0 0 0/4 * * ?"/>
-        <!-- 每天00:00:00触发搜索服务器-->
+        <!-- 每4个小时抓取一次搜狗订阅号文章-->
     </bean>
 
 
@@ -46,8 +46,8 @@
     <bean id="pushNewHotArticlesJobDetailTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="pushNewHotArticlesJobDetail"/>
-        <property name="cronExpression" value="0 0 12 * * ?"/>
-        <!-- 每天00:00:00触发搜索服务器-->
+        <property name="cronExpression" value="0 0 7,20 * * ?"/>
+        <!-- 每天9点、12点、18点、22点触发推送热门文章信息-->
     </bean>
 
     <!--配置推送最新文章的定时器业务实现 -->
@@ -60,8 +60,8 @@
     <bean id="pushWechatArticlesJobDetailTrigger"
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="pushWechatArticlesJobDetail"/>
-        <property name="cronExpression" value="0 0 0/15 * * ?"/>
-        <!-- 每天00:00:00触发搜索服务器-->
+        <property name="cronExpression" value="0 0 0/2 * * ?"/>
+        <!-- 每2个小时触发微信公众号文章-->
     </bean>
 
 

@@ -16,6 +16,8 @@ public class BriefArticleModel {
     private String briefIntro;
     private String logo;
     private String title;
+    private String createTime;
+    private String timeType;
 
     public String getId() {
         return id;
@@ -87,5 +89,21 @@ public class BriefArticleModel {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getTimeType() {
+        return timeType;
+    }
+
+    public void setTimeType(String timeType) {
+        this.timeType = timeType;
     }
 }

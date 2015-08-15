@@ -91,4 +91,9 @@ public class CustomerServiceImpl implements CustomerService {
 
         return customerList;
     }
+
+    @Override
+    public Customer findOne(String customerId) {
+        return customerRepository.findOne(customerId);
+    }
 }

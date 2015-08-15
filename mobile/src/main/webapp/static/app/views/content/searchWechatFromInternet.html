@@ -13,7 +13,7 @@
         </div>
 
         <div ng-repeat="wechat in wechats">
-            <div class="media">
+            <div class="media pd-t5 pd-b5" ng-click="wechatDetail(wechat.id)">
                 <a class="pull-left" href="javascript:;">
                     <img alt="" src="{{wechat.logo}}" class="img-rounded img64_64">
                 </a>
@@ -22,7 +22,6 @@
                     <label class="media-heading">{{wechat.name}}</label>
                     <a href="javascript:void(0);" ng-click="operateSubscribe(wechat.openId, wechat.sub, $index, $event)"
                        ng-class="getBtnClass(wechat.sub)"><i ng-class="getIconClass(wechat.sub)"></i></a>
-                    <br/>
                     <span class="position-absolute bottom-0">
                         <small>{{wechat.company}}</small>
                     </span>

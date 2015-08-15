@@ -36,4 +36,10 @@ public class WeixinConfig {
     public MediaAPI getMediaAPI(String appId, String appSecret){
         return new MediaAPI(this.getApiConfig(appId, appSecret));
     }
+
+    public JsAPI getJsAPI(String appId, String appSecret){
+        ApiConfig apiConfig = this.getApiConfig(appId, appSecret);
+        apiConfig.setEnableJsApi(true);
+        return new JsAPI(apiConfig);
+    }
 }

@@ -13,36 +13,34 @@ import javax.persistence.*;
  * @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "t_read_log", catalog = "dongtai", uniqueConstraints = {})
-public class ReadLog implements java.io.Serializable {
+@Table(name = "t_share_log", catalog = "dongtai", uniqueConstraints = {})
+public class ShareLog implements java.io.Serializable {
 
 	// Fields
 
 	private String id;
-	private String articleId;
 	private String customerId;
-	private String shareCustomerId;
-	private Article article;
-	private Customer customer;
+	private String articleId;
+	private String shareType;
 	private DateTime createTime;
 
 	// Constructors
 
 	/** default constructor */
-	public ReadLog() {
+	public ShareLog() {
 	}
 
 	/** minimal constructor */
-	public ReadLog(String id) {
+	public ShareLog(String id) {
 		this.id = id;
 	}
 
 	/** full constructor */
-	public ReadLog(String id, String articleId, DateTime createTime, String customerId) {
+	public ShareLog(String id, DateTime createTime, String customerId, String articleId) {
 		this.id = id;
-		this.articleId = articleId;
 		this.createTime = createTime;
 		this.customerId = customerId;
+		this.articleId = articleId;
 	}
 
 	// Property accessors
@@ -58,14 +56,6 @@ public class ReadLog implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "article_id", unique = false, nullable = true, insertable = true, updatable = true, length = 32)
-	public String getArticleId() {
-		return this.articleId;
-	}
-
-	public void setArticleId(String articleId) {
-		this.articleId = articleId;
-	}
 
 	@Column(name = "customer_id", unique = false, nullable = true, insertable = true, updatable = true, length = 32)
 	public String getCustomerId() {
@@ -76,14 +66,15 @@ public class ReadLog implements java.io.Serializable {
 		this.customerId = customerId;
 	}
 
-	@Column(name = "share_customer_id", unique = false, nullable = true, insertable = true, updatable = true, length = 32)
-	public String getShareCustomerId() {
-		return this.shareCustomerId;
+	@Column(name = "article_id", unique = false, nullable = true, insertable = true, updatable = true, length = 32)
+	public String getArticleId() {
+		return this.articleId;
 	}
 
-	public void setShareCustomerId(String shareCustomerId) {
-		this.shareCustomerId = shareCustomerId;
+	public void setArticleId(String articleId) {
+		this.articleId = articleId;
 	}
+
 
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime",
 			parameters = { @Parameter(name = "databaseZone", value = "Asia/Shanghai"),
@@ -97,26 +88,13 @@ public class ReadLog implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id", nullable = true, insertable = false, updatable = false)
-	public Customer getCustomer() {
-		return this.customer;
+
+	@Column(name = "share_type", unique = false, nullable = true, insertable = true, updatable = true, length = 16)
+	public String getShareType() {
+		return shareType;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setShareType(String shareType) {
+		this.shareType = shareType;
 	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "article_id", nullable = true, insertable = false, updatable = false)
-	public Article getArticle() {
-		return this.article;
-	}
-
-	public void setArticle(Article article) {
-		this.article = article;
-	}
-
-
-
 }
