@@ -100,11 +100,11 @@ angular.module('articleController', ['service'])
             }
 
             articleRest.customGET('getSimilarLatestArticle', {articleId: $stateParams.articleId}).then(function (data) {
-                console.log(data);
+                $scope.similarArticle = data.obj;
             });
 
-            $scope.loadMore = function(){
-                console.log("-----------------------");
+            $scope.goToDetail = function (articleId) {
+                var customerId = window.sessionStorage.getItem("customerId")
+                $state.go("articleDetail", {articleId:articleId, shareFrom:customerId});
             }
-
         }])

@@ -1,4 +1,4 @@
-<div class="panel panel-default" infinite-scroll="loadMore()" infinite-scroll-immediate-check=true>
+<div class="panel panel-default mgb-0" infinite-scroll="loadMore()" infinite-scroll-immediate-check=true>
     <div class="panel-body">
         <div class="media">
             <div class="media-body position-relative height-64">
@@ -32,4 +32,20 @@
         </div>
     </div>
 </div>
-
+相关阅读
+<div class="panel panel-default mgb-0">
+    <div class="panel-body">
+        <div ng-repeat="article in similarArticle">
+        <div class="row" ng-click="goToDetail(article.id)" >
+            <div class="col-md-12 mgt-10">
+                <article class="media-box">
+                    <div class="media-box-body">
+                        <label class="media-heading ng-binding">{{article.title}}</label>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="divider divider-dashed divider-sm pull-in"></div>
+        </div>
+    </div>
+</div>
