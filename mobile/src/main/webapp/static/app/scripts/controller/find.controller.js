@@ -10,6 +10,9 @@ angular.module('findController', ['service'])
             wechatTypeRest.customGET('getWechatType').then(function (data) {
                 $scope.wechatTypes = data.obj;
                 toggleLevelInner(0);
+                $scope.$watch("$viewContentLoaded",function(){
+                    $timeout(function(){gmu.$('#navigator').navigator();},1);
+                });
             });
 
 
