@@ -16,12 +16,12 @@
 }
 
 body {
-    font: normal 14px/1.5 "\5FAE\8F6F\96C5\9ED1", Helvetica;
-    font-family: 微软雅黑, Helvetica;
-    color: #9b9b9b;
+    font: 12px;
+    color: #DEDEDE;
     background-color: #F5F5F5;
     background-repeat: repeat;
     background-image: url(img/bg/2.png);
+    font-family: 'Roboto Condensed', sans-serif;
     -webkit-font-smoothing: antialiased !important;
 }
 
@@ -57,11 +57,11 @@ body {
 }
 
 .block {
-    width: 100%;
+    width: 90%;
     position: relative;
     background-color: #FFF;
     height: auto;
-    /*margin: 0px 5% 15px 5%;*/
+    margin: 0px 5% 15px 5%;
     box-shadow: 0px 1px 2px #cdcdcd;
 }
 
@@ -207,7 +207,8 @@ body {
 
 /************************************************************************* HEADER TXT *************************************************************************/
 h1 {
-    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 32px;
     text-align: center;
     padding: 10px;
     font-weight: 300;
@@ -215,7 +216,8 @@ h1 {
 }
 
 h2 {
-    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
     text-align: center;
     padding: 0px;
     font-weight: 300;
@@ -223,7 +225,8 @@ h2 {
 }
 
 h3 {
-    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
     text-align: center;
     padding: 0px;
     font-weight: 300;
@@ -231,7 +234,8 @@ h3 {
 }
 
 h4 {
-    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
     text-align: center;
     padding: 0px;
     font-weight: 300;
@@ -240,16 +244,18 @@ h4 {
 }
 
 h5 {
-    font-size: 16px;
-    padding: 0px 10px 0px 10px;
-    color: #121212;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
+    /*text-align: center;*/
+    padding: 0px;
+    font-weight: 300;
+    color: #191919;
     margin-top: 20px;
-    line-height: 19px;
-
 }
 
 h6 {
-    font-size: 16px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
     text-align: center;
     padding: 0px;
     font-weight: 300;
@@ -1790,13 +1796,12 @@ hr {
     padding: 0;
     list-style: none;
     border-bottom: 1px solid #F0F0F0;
-    margin-bottom:0px;
 }
 
 #filters li {
     float: left;
-    /*width: 25%;*/
-    font-size: 14px;
+    width: 25%;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -1807,6 +1812,7 @@ hr {
     color: #5C5C5C;
     cursor: pointer;
     text-transform: uppercase;
+    font-weight: 400;
 }
 
 #filters li span.active {
@@ -1934,7 +1940,7 @@ hr {
 /************************************************************************* SERVICES TABLE *************************************************************************/
 .serv-servbox {
     float: left;
-    width: 33.33333%;
+    width: 50%;
     height: auto;
     border-right: 1px solid #F3F3F3;
     border-bottom: 1px solid #F3F3F3;
@@ -1951,6 +1957,9 @@ hr {
     line-height: 24px;
 }
 
+.serv-servbox h3 {
+    font-size: 24px;
+}
 
 .serv-serv-img {
     background-color: #fe0000;
@@ -2976,8 +2985,8 @@ hr {
 
 .view-container {
 
-    padding-left:0px;
-    padding-right:0px;
+    padding-left:5px;
+    padding-right:5px;
 }
 
 
@@ -3047,19 +3056,6 @@ img.img80_80 {
 .pd-t10{
     padding-top: 10px;
 }
-.pd-t5{
-    padding-top: 5px;
-}
-.pd-b5{
-    padding-bottom:5px;
-}
-.mrg-t10{
-    margin-top: 10px;
-}
-.mrg-t5{
-    margin-top: 5px;
-}
-
 a.bg-success:hover {
     background-color: #fe0000 !important;
 }
@@ -3070,24 +3066,4 @@ a.bg-success {
 
 .non-display{
     display:none;
-}
-.left-menu{
-    position: fixed;
-    z-index: 1031;
-    height: 100%;
-}
-.media-box-photo{
-    background-size: cover;
-    float: left;
-    padding-bottom:42%;
-    width: 100%;
-    height: 0;
-    margin-bottom: 10px;
-}
-
-.nav {
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-    position: relative;
 }

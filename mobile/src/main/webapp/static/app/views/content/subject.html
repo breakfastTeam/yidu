@@ -1,47 +1,40 @@
-<div class="nav container">
-    <ul id = "filters" class="clearfix">
-        <li ng-repeat="subject in subjects" ng-click="getArticles(subject.id, $index)" class="{{navWidth}}">
-            <span ng-class="{active:$index==index}">{{subject.name}}</span>
-        </li>
-    </ul>
+<div class="container full-width" style="padding-right:0px; padding-left: 0px;">
+<ul id="filters" class="clearfix">
+    <li ng-repeat="subject in subjects" ng-click="getArticles(subject.id, $index)">
+        <span ng-class="{active:$index==index}">{{subject.name}}</span>
+    </li>
+</ul>
 </div>
-
 <div class="panel panel-default" ng-repeat="article in articles">
-    <div class="panel-body" ng-click="goToDetail(article.id)" style="padding-top:0px;">
+    <div class="panel-body" ng-click="goToDetail(article.id)">
         <div class="row">
-            <div class="media-box-photo" style="background-image:url('{{article.logo}}')"></div>
-            <h5>{{article.title}}</h5>
-        </div>
-        <div class="divider divider-dashed divider-lg pull-in"></div>
-        <div class="row" style="padding-top: 10px;">
-            <div class="col-md-6 pull-right">
-                <span ng-if="article.timeType=='minute'" class="ti-alarm-clock">
-                    {{article.createTime}}分钟前
-                </span>
-                <span ng-if="article.timeType=='hour'" class="ti-alarm-clock">
-                    {{article.createTime}}小时前
-                </span>
-                <span ng-if="article.timeType=='day'" class="ti-alarm-clock">
-                    {{article.createTime}}天前
-                </span>
-                <span ng-if="article.timeType=='mouth'" class="ti-alarm-clock">
-                    {{article.createTime}}月前
-                </span>
-                <span ng-if="article.timeType=='other'" class="ti-alarm-clock">
-                    很久前
-                </span>
+            <div class="col-md-12">
+                <article class="media-box">
+                    <div class="media-box-photo">
+                        <img src="{{article.logo}}" alt="" style="width: 100%;">
+                    </div>
+                    <div class="media-box-body">
+                        <a class="profile-img pull-right" href=""><img src="" alt=""></a>
+                        <h5>{{article.title}}</h5>
 
+                        <div class="text-muted">
+                            {{article.briefIntro}}
+                        </div>
+                    </div>
+                </article>
 
             </div>
-            <div class="col-md-6">
-                <span ng-if="article.author" class="ti-user">
-                    {{article.author}}
-                </span>
-                <span ng-if="!article.author" class="ti-user">
-                    佚名
-                </span>
 
-                <span class="ti-eye">{{article.readTimes}}</span>
+        </div>
+        </br>
+        <div class="divider divider-dashed divider-lg pull-in"></div>
+        </br>
+        <div class="row">
+            <div class="col-md-6 pull-right">
+                <span class="ti-thumb-up"></span>
+            </div>
+            <div class="col-md-6">
+                <span class="ti-eye"></span><div class="space"></div>{{article.readTimes}}
             </div>
 
         </div>
@@ -50,9 +43,3 @@
 <input type="hidden" ng-bind="{{pageNo}}"/>
 <button ng-if="!last" ng-click="loadMore()" type="button" class="btn btn-default btn-block">加载更多</button>
 </br>
-
-<script type="text/javascript">
-    $(function(){
-
-    });
-</script>
